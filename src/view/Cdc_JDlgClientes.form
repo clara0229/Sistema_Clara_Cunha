@@ -326,9 +326,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="cdc_jBtnIncluir">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/img/incluir.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Incluir"/>
       </Properties>
       <Events>
@@ -337,9 +334,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="cdc_jBtnAlterar">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/img/alterar.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Alterar"/>
       </Properties>
       <Events>
