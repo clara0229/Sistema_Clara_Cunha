@@ -134,7 +134,7 @@ public class Cdc_JDlgClientes extends javax.swing.JDialog {
             }
         });
 
-        cdc_jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
+        cdc_jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar.png"))); // NOI18N
         cdc_jBtnAlterar.setText("Alterar");
         cdc_jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
