@@ -4,12 +4,23 @@
  */
 package view;
 
+import tools.Util;
+
 
 /**
  *
  * @author clari
  */
 public class Cdc_jDlgUsuario extends javax.swing.JDialog {
+    
+    public Cdc_jDlgUsuario(java.awt.Frame parent, boolean modal) {
+    super(parent, modal);
+    initComponents();
+    setTitle("Cadastro de Usuários");
+    setLocationRelativeTo(null);
+    Util.habilitar(false, cdc_jTxtCodigo, cdc_jTxtNome, cdc_jChbAtivo, cdc_jCboNivel, cdc_jFmtCpf, cdc_jFmtdataNasci, cdc_jTxtApelido, cdc_jPwdSenha, cdc_jBtnConfirmar, cdc_jBtnCancelar);
+}
+
 
     
     /**
@@ -79,7 +90,7 @@ public class Cdc_jDlgUsuario extends javax.swing.JDialog {
 
         cdc_jLblSenha.setText("Senha");
 
-        cdc_jBtnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/incluir.png"))); // NOI18N
+        cdc_jBtnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/incluir.png"))); // NOI18N
         cdc_jBtnIncluir.setText("Incluir");
         cdc_jBtnIncluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,7 +98,7 @@ public class Cdc_jDlgUsuario extends javax.swing.JDialog {
             }
         });
 
-        cdc_jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
+        cdc_jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar.png"))); // NOI18N
         cdc_jBtnAlterar.setText("Alterar");
         cdc_jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +106,7 @@ public class Cdc_jDlgUsuario extends javax.swing.JDialog {
             }
         });
 
-        cdc_jBtnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/excluir.png"))); // NOI18N
+        cdc_jBtnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/excluir.png"))); // NOI18N
         cdc_jBtnExcluir.setText("Excluir");
         cdc_jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +114,7 @@ public class Cdc_jDlgUsuario extends javax.swing.JDialog {
             }
         });
 
-        cdc_jBtnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/confirmar.png"))); // NOI18N
+        cdc_jBtnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/confirmar.png"))); // NOI18N
         cdc_jBtnConfirmar.setText("Confirmar");
         cdc_jBtnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +122,7 @@ public class Cdc_jDlgUsuario extends javax.swing.JDialog {
             }
         });
 
-        cdc_jBtnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pesquisar.png"))); // NOI18N
+        cdc_jBtnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisar.png"))); // NOI18N
         cdc_jBtnPesquisar.setText("Pesquisar");
         cdc_jBtnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +138,7 @@ public class Cdc_jDlgUsuario extends javax.swing.JDialog {
             }
         });
 
-        cdc_jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
+        cdc_jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
         cdc_jBtnCancelar.setText("Cancelar");
         cdc_jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -265,17 +276,25 @@ public class Cdc_jDlgUsuario extends javax.swing.JDialog {
 
     private void cdc_jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnIncluirActionPerformed
         // TODO add your handling code here:
+        Util.habilitar(true, cdc_jTxtCodigo, cdc_jTxtNome, cdc_jTxtApelido, cdc_jFmtCpf, cdc_jFmtdataNasci, cdc_jPwdSenha, cdc_jCboNivel, cdc_jChbAtivo, cdc_jBtnConfirmar, cdc_jBtnCancelar);
+        Util.habilitar(false, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jBtnPesquisar, cdc_jBtnIncluir);
+        Util.limpar(cdc_jTxtCodigo, cdc_jTxtNome, cdc_jTxtApelido);
+
         
     }//GEN-LAST:event_cdc_jBtnIncluirActionPerformed
 
     private void cdc_jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnExcluirActionPerformed
         // TODO add your handling code here:
+        Util.perguntar("Deseja excluir o registro?");
         
        
     }//GEN-LAST:event_cdc_jBtnExcluirActionPerformed
 
     private void cdc_jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
+        Util.habilitar(false, cdc_jTxtCodigo, cdc_jTxtNome, cdc_jTxtApelido, cdc_jFmtCpf, cdc_jFmtdataNasci, cdc_jPwdSenha, cdc_jCboNivel, cdc_jChbAtivo, cdc_jBtnConfirmar, cdc_jBtnCancelar);
+        Util.habilitar(true, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jBtnPesquisar, cdc_jBtnIncluir);
+
         
                     
        
@@ -283,6 +302,7 @@ public class Cdc_jDlgUsuario extends javax.swing.JDialog {
 
     private void cdc_jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnPesquisarActionPerformed
         // TODO add your handling code here:
+         Util.mensagem("Não Implementado.");
         
         
     }//GEN-LAST:event_cdc_jBtnPesquisarActionPerformed
@@ -293,13 +313,33 @@ public class Cdc_jDlgUsuario extends javax.swing.JDialog {
 
     private void cdc_jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnAlterarActionPerformed
         // TODO add your handling code here:
+        Util.habilitar(true, cdc_jTxtNome, cdc_jTxtApelido, cdc_jFmtCpf, cdc_jFmtdataNasci, cdc_jPwdSenha, cdc_jCboNivel, cdc_jChbAtivo, cdc_jBtnConfirmar, cdc_jBtnCancelar);
+        Util.habilitar(false, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jBtnPesquisar, cdc_jBtnIncluir);
+
        
     }//GEN-LAST:event_cdc_jBtnAlterarActionPerformed
 
     private void cdc_jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnCancelarActionPerformed
         // TODO add your handling code here:
+        Util.habilitar(false, cdc_jTxtCodigo, cdc_jTxtNome, cdc_jTxtApelido, cdc_jFmtCpf, cdc_jFmtdataNasci, cdc_jPwdSenha, cdc_jCboNivel, cdc_jChbAtivo, cdc_jBtnConfirmar, cdc_jBtnCancelar);
+        Util.habilitar(true, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jBtnPesquisar, cdc_jBtnIncluir);
+
         
     }//GEN-LAST:event_cdc_jBtnCancelarActionPerformed
+        public static void main(String args[]) {
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            Cdc_jDlgUsuario dialog = new Cdc_jDlgUsuario(new javax.swing.JFrame(), true);
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
+        }
+    });
+}
 
     /**
      * @param args the command line arguments

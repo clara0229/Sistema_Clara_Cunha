@@ -4,12 +4,21 @@
  */
 package view;
 
+import tools.Util;
+
 
 /**
  *
  * @author clari
  */
 public class Cdc_jDlgVendedor extends javax.swing.JDialog {
+    public Cdc_jDlgVendedor(java.awt.Frame parent, boolean modal) {
+    super(parent, modal);
+    initComponents();
+    setTitle("Cadastro de Usuários");
+    setLocationRelativeTo(null);
+    Util.habilitar(false, cdc_jTxtCodigo, cdc_jTxtNome, cdc_jCBocAtivoSim, cdc_jFmtCpf, cdc_jFmtdataAdm, cdc_jFmtdataNasc, cdc_jTxtHorasTrabalhadas, cdc_jBtnConfirmar, cdc_jBtnCancelar);
+}
 
   
     
@@ -77,7 +86,7 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
 
         cdc_jLblAtivo.setText("Ativo");
 
-        cdc_jBtnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/incluir.png"))); // NOI18N
+        cdc_jBtnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/incluir.png"))); // NOI18N
         cdc_jBtnIncluir.setText("Incluir");
         cdc_jBtnIncluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,7 +94,7 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
             }
         });
 
-        cdc_jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alterar.png"))); // NOI18N
+        cdc_jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar.png"))); // NOI18N
         cdc_jBtnAlterar.setText("Alterar");
         cdc_jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +102,7 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
             }
         });
 
-        cdc_jBtnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/excluir.png"))); // NOI18N
+        cdc_jBtnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/excluir.png"))); // NOI18N
         cdc_jBtnExcluir.setText("Excluir");
         cdc_jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +110,7 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
             }
         });
 
-        cdc_jBtnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/confirmar.png"))); // NOI18N
+        cdc_jBtnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/confirmar.png"))); // NOI18N
         cdc_jBtnConfirmar.setText("Confirmar");
         cdc_jBtnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +118,7 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
             }
         });
 
-        cdc_jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
+        cdc_jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
         cdc_jBtnCancelar.setText("Cancelar");
         cdc_jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +126,7 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
             }
         });
 
-        cdc_jbtnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pesquisar.png"))); // NOI18N
+        cdc_jbtnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisar.png"))); // NOI18N
         cdc_jbtnPesquisar.setText("Pesquisar");
         cdc_jbtnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,54 +159,52 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(cdc_jBtnIncluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cdc_jBtnAlterar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cdc_jBtnExcluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cdc_jBtnConfirmar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cdc_jBtnCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cdc_jbtnPesquisar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(cdc_jBtnIncluir)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cdc_jBtnAlterar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cdc_jBtnExcluir)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cdc_jBtnConfirmar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cdc_jBtnCancelar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cdc_jbtnPesquisar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cdc_jLblCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cdc_jLblCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cdc_jLblCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(cdc_jLblDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(cdc_jTxtCodigo)
-                                            .addComponent(cdc_jFmtdataNasc))
-                                        .addGap(27, 27, 27)))
+                                    .addComponent(cdc_jLblCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cdc_jLblDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cdc_jTxtCodigo)
+                                    .addComponent(cdc_jFmtdataNasc))
+                                .addGap(27, 27, 27)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cdc_jTxtHorasTrabalhadas)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cdc_jTxtNome)
+                                .addGap(18, 18, 18)
+                                .addComponent(cdc_jCBocAtivoSim)
+                                .addGap(17, 17, 17))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cdc_jTxtHorasTrabalhadas)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cdc_jTxtNome)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cdc_jCBocAtivoSim)
-                                        .addGap(17, 17, 17))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cdc_jLblDataNasc1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(cdc_jLblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cdc_jLblAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cdc_jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addContainerGap())
+                                    .addComponent(cdc_jLblDataNasc1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cdc_jLblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cdc_jLblAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cdc_jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(cdc_jFmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(cdc_jFmtdataAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,10 +229,10 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
                             .addComponent(cdc_jLblCpf)))
                     .addComponent(cdc_jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cdc_jFmtdataAdm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cdc_jFmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cdc_jFmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cdc_jFmtdataAdm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cdc_jLblDataNasc)
                     .addComponent(cdc_jLabel1))
@@ -241,7 +248,7 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
                     .addComponent(cdc_jBtnConfirmar)
                     .addComponent(cdc_jBtnCancelar)
                     .addComponent(cdc_jbtnPesquisar))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -257,28 +264,39 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
 
     private void cdc_jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnIncluirActionPerformed
         // TODO add your handling code here:
+        Util.habilitar(true, cdc_jTxtCodigo, cdc_jTxtNome, cdc_jCBocAtivoSim, cdc_jFmtCpf, cdc_jFmtdataAdm, cdc_jFmtdataNasc, cdc_jTxtHorasTrabalhadas, cdc_jBtnConfirmar, cdc_jBtnCancelar);
+        Util.habilitar(false, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jbtnPesquisar, cdc_jBtnIncluir);
+        Util.limpar(cdc_jTxtCodigo, cdc_jTxtNome);
+
        
     }//GEN-LAST:event_cdc_jBtnIncluirActionPerformed
 
     private void cdc_jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnExcluirActionPerformed
         // TODO add your handling code here:
+        Util.perguntar("Deseja excluir o registro?");
         
        
     }//GEN-LAST:event_cdc_jBtnExcluirActionPerformed
 
     private void cdc_jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
+        Util.habilitar(false, cdc_jTxtCodigo, cdc_jTxtNome, cdc_jCBocAtivoSim, cdc_jFmtCpf, cdc_jFmtdataAdm, cdc_jFmtdataNasc, cdc_jTxtHorasTrabalhadas, cdc_jBtnConfirmar, cdc_jBtnCancelar);
+        Util.habilitar(true, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jbtnPesquisar, cdc_jBtnIncluir);
+
         
     }//GEN-LAST:event_cdc_jBtnConfirmarActionPerformed
 
     private void cdc_jbtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jbtnPesquisarActionPerformed
         // TODO add your handling code here:
+        Util.mensagem("Nao Implementado.");
         
     }//GEN-LAST:event_cdc_jbtnPesquisarActionPerformed
 
     private void cdc_jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-        
+        Util.habilitar(false, cdc_jTxtCodigo, cdc_jTxtNome, cdc_jCBocAtivoSim, cdc_jFmtCpf, cdc_jFmtdataAdm, cdc_jFmtdataNasc, cdc_jTxtHorasTrabalhadas, cdc_jBtnConfirmar, cdc_jBtnCancelar);
+Util.habilitar(true, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jbtnPesquisar, cdc_jBtnIncluir);
+
     }//GEN-LAST:event_cdc_jBtnCancelarActionPerformed
 
     private void cdc_jCBocAtivoSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jCBocAtivoSimActionPerformed
@@ -291,6 +309,9 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
 
     private void cdc_jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnAlterarActionPerformed
         // TODO add your handling code here:
+        Util.habilitar(true, cdc_jTxtNome, cdc_jCBocAtivoSim, cdc_jFmtCpf, cdc_jFmtdataAdm, cdc_jFmtdataNasc, cdc_jTxtHorasTrabalhadas, cdc_jBtnConfirmar, cdc_jBtnCancelar);
+        Util.habilitar(false, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jbtnPesquisar, cdc_jBtnIncluir);
+
         
     }//GEN-LAST:event_cdc_jBtnAlterarActionPerformed
 
@@ -305,6 +326,21 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
+    public static void main(String args[]) {
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            Cdc_jDlgVendedor dialog = new Cdc_jDlgVendedor(new javax.swing.JFrame(), true);
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
+        }
+    });
+}
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
