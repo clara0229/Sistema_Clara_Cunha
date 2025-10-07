@@ -13,6 +13,7 @@ import tools.Util;
  * @author clari
  */
 public class Cdc_jDlgVestidos extends javax.swing.JDialog {
+    boolean pesquisando = false;
     public Cdc_jDlgVestidos(java.awt.Frame parent, boolean modal) {
     super(parent, modal);
     initComponents();
@@ -242,7 +243,12 @@ public class Cdc_jDlgVestidos extends javax.swing.JDialog {
 
     private void cdc_jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-         Util.perguntar("Deseja excluir o registro?");
+        if (pesquisando == false) {
+            Util.mensagem("Você precisa pesquisar um usuário primeiro");
+        } else {
+                Util.perguntar("Você deseja excluir?");
+                Util.limpar(cdc_jTxtCodigo, cdc_JTxtNome, cdc_jCBocAtivo, cdc_jTxtPreco, cdc_jTxtModelo, cdc_jTxtCategoria, cdc_jTxtMarca);  
+        }
         
        
     }//GEN-LAST:event_cdc_jBtnExcluirActionPerformed
@@ -257,7 +263,10 @@ public class Cdc_jDlgVestidos extends javax.swing.JDialog {
 
     private void cdc_jbtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jbtnPesquisarActionPerformed
         // TODO add your handling code here:
-         Util.mensagem("Não Implementado.");
+        Cdc_jDlgPesquisarVestidos jDlgUsuariosPesquisar = new Cdc_jDlgPesquisarVestidos(null, true);
+        jDlgUsuariosPesquisar.setTelaPai(this);
+        jDlgUsuariosPesquisar.setVisible(true);
+        pesquisando = true;
         
     }//GEN-LAST:event_cdc_jbtnPesquisarActionPerformed
 
