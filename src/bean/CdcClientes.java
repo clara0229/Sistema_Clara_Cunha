@@ -26,7 +26,7 @@ import javax.persistence.TemporalType;
 public class CdcClientes  implements java.io.Serializable {
 
 
-     private Integer cdcIdClientes;
+     private int cdcIdClientes;
      private String cdcNome;
      private String cdcCpf;
      private String cdcRg;
@@ -41,7 +41,6 @@ public class CdcClientes  implements java.io.Serializable {
      private String cdcTelefone;
      private String cdcCelular;
      private String cdcAtivo;
-     private Set cdcVendases = new HashSet(0);
 
     public CdcClientes() {
     }
@@ -58,7 +57,7 @@ public class CdcClientes  implements java.io.Serializable {
         this.cdcCidade = cdcCidade;
         this.cdcCelular = cdcCelular;
     }
-    public CdcClientes(String cdcNome, String cdcCpf, String cdcRg, String cdcSexo, Date cdcDataNas, String cdcEmail, String cdcCep, String cdcEndereco, String cdcBairro, String cdcEstado, String cdcCidade, String cdcTelefone, String cdcCelular, String cdcAtivo, Set cdcVendases) {
+    public CdcClientes(String cdcNome, String cdcCpf, String cdcRg, String cdcSexo, Date cdcDataNas, String cdcEmail, String cdcCep, String cdcEndereco, String cdcBairro, String cdcEstado, String cdcCidade, String cdcTelefone, String cdcCelular, String cdcAtivo) {
        this.cdcNome = cdcNome;
        this.cdcCpf = cdcCpf;
        this.cdcRg = cdcRg;
@@ -73,18 +72,18 @@ public class CdcClientes  implements java.io.Serializable {
        this.cdcTelefone = cdcTelefone;
        this.cdcCelular = cdcCelular;
        this.cdcAtivo = cdcAtivo;
-       this.cdcVendases = cdcVendases;
+       
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="cdc_idClientes", unique=true, nullable=false)
-    public Integer getCdcIdClientes() {
+    public int getCdcIdClientes() {
         return this.cdcIdClientes;
     }
     
-    public void setCdcIdClientes(Integer cdcIdClientes) {
+    public void setCdcIdClientes(int cdcIdClientes) {
         this.cdcIdClientes = cdcIdClientes;
     }
 
@@ -228,14 +227,7 @@ public class CdcClientes  implements java.io.Serializable {
         this.cdcAtivo = cdcAtivo;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="cdcClientes")
-    public Set getCdcVendases() {
-        return this.cdcVendases;
-    }
-    
-    public void setCdcVendases(Set cdcVendases) {
-        this.cdcVendases = cdcVendases;
-    }
+
 
 
 

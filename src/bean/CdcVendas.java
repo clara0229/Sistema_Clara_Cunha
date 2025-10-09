@@ -2,7 +2,6 @@ package bean;
 // Generated 06/10/2025 20:05:40 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,27 +28,27 @@ import javax.persistence.TemporalType;
 public class CdcVendas  implements java.io.Serializable {
 
 
-     private Integer cdcIdVendas;
+     private int cdcIdVendas;
      private CdcClientes cdcClientes;
      private CdcUsuario cdcUsuario;
      private Date cdcDataVenda;
      private String cdcStatus;
      private String cdcFormaPaga;
-     private BigDecimal cdcTotal;
+     private double cdcTotal;
      private Set cdcVendasProdutoses = new HashSet(0);
 
     public CdcVendas() {
     }
 
 	
-    public CdcVendas(CdcClientes cdcClientes, CdcUsuario cdcUsuario, String cdcStatus, String cdcFormaPaga, BigDecimal cdcTotal) {
+    public CdcVendas(CdcClientes cdcClientes, CdcUsuario cdcUsuario, String cdcStatus, String cdcFormaPaga, double cdcTotal) {
         this.cdcClientes = cdcClientes;
         this.cdcUsuario = cdcUsuario;
         this.cdcStatus = cdcStatus;
         this.cdcFormaPaga = cdcFormaPaga;
         this.cdcTotal = cdcTotal;
     }
-    public CdcVendas(CdcClientes cdcClientes, CdcUsuario cdcUsuario, Date cdcDataVenda, String cdcStatus, String cdcFormaPaga, BigDecimal cdcTotal, Set cdcVendasProdutoses) {
+    public CdcVendas(CdcClientes cdcClientes, CdcUsuario cdcUsuario, Date cdcDataVenda, String cdcStatus, String cdcFormaPaga, double cdcTotal) {
        this.cdcClientes = cdcClientes;
        this.cdcUsuario = cdcUsuario;
        this.cdcDataVenda = cdcDataVenda;
@@ -63,11 +62,11 @@ public class CdcVendas  implements java.io.Serializable {
 
     
     @Column(name="cdc_idVendas", unique=true, nullable=false)
-    public Integer getCdcIdVendas() {
+    public int getCdcIdVendas() {
         return this.cdcIdVendas;
     }
     
-    public void setCdcIdVendas(Integer cdcIdVendas) {
+    public void setCdcIdVendas(int cdcIdVendas) {
         this.cdcIdVendas = cdcIdVendas;
     }
 
@@ -123,22 +122,15 @@ public class CdcVendas  implements java.io.Serializable {
 
     
     @Column(name="cdc_total", nullable=false, precision=10)
-    public BigDecimal getCdcTotal() {
+    public double getCdcTotal() {
         return this.cdcTotal;
     }
     
-    public void setCdcTotal(BigDecimal cdcTotal) {
+    public void setCdcTotal(double cdcTotal) {
         this.cdcTotal = cdcTotal;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="cdcVendas")
-    public Set getCdcVendasProdutoses() {
-        return this.cdcVendasProdutoses;
-    }
-    
-    public void setCdcVendasProdutoses(Set cdcVendasProdutoses) {
-        this.cdcVendasProdutoses = cdcVendasProdutoses;
-    }
+
 
 
 

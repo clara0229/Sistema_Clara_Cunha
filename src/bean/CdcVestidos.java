@@ -2,7 +2,6 @@ package bean;
 // Generated 06/10/2025 20:05:40 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -24,15 +23,14 @@ import javax.persistence.Table;
 public class CdcVestidos  implements java.io.Serializable {
 
 
-     private Integer cdcIdVestidos;
+     private int cdcIdVestidos;
      private String cdcNome;
-     private BigDecimal cdcPreco;
+     private double cdcPreco;
      private String cdcModelo;
      private String cdcCategoria;
      private String cdcMarca;
      private String cdcAtivo;
-     private Set cdcVendasProdutoses = new HashSet(0);
-
+   
     public CdcVestidos() {
     }
 
@@ -41,25 +39,24 @@ public class CdcVestidos  implements java.io.Serializable {
         this.cdcNome = cdcNome;
         this.cdcAtivo = cdcAtivo;
     }
-    public CdcVestidos(String cdcNome, BigDecimal cdcPreco, String cdcModelo, String cdcCategoria, String cdcMarca, String cdcAtivo, Set cdcVendasProdutoses) {
+    public CdcVestidos(String cdcNome, double cdcPreco, String cdcModelo, String cdcCategoria, String cdcMarca, String cdcAtivo) {
        this.cdcNome = cdcNome;
        this.cdcPreco = cdcPreco;
        this.cdcModelo = cdcModelo;
        this.cdcCategoria = cdcCategoria;
        this.cdcMarca = cdcMarca;
        this.cdcAtivo = cdcAtivo;
-       this.cdcVendasProdutoses = cdcVendasProdutoses;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="cdc_idVestidos", unique=true, nullable=false)
-    public Integer getCdcIdVestidos() {
+    public int getCdcIdVestidos() {
         return this.cdcIdVestidos;
     }
     
-    public void setCdcIdVestidos(Integer cdcIdVestidos) {
+    public void setCdcIdVestidos(int cdcIdVestidos) {
         this.cdcIdVestidos = cdcIdVestidos;
     }
 
@@ -75,11 +72,11 @@ public class CdcVestidos  implements java.io.Serializable {
 
     
     @Column(name="cdc_preco", precision=10)
-    public BigDecimal getCdcPreco() {
+    public double getCdcPreco() {
         return this.cdcPreco;
     }
     
-    public void setCdcPreco(BigDecimal cdcPreco) {
+    public void setCdcPreco(double cdcPreco) {
         this.cdcPreco = cdcPreco;
     }
 
@@ -123,14 +120,7 @@ public class CdcVestidos  implements java.io.Serializable {
         this.cdcAtivo = cdcAtivo;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="cdcVestidos")
-    public Set getCdcVendasProdutoses() {
-        return this.cdcVendasProdutoses;
-    }
-    
-    public void setCdcVendasProdutoses(Set cdcVendasProdutoses) {
-        this.cdcVendasProdutoses = cdcVendasProdutoses;
-    }
+
 
 
 

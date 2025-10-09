@@ -26,7 +26,7 @@ import javax.persistence.TemporalType;
 public class CdcUsuario  implements java.io.Serializable {
 
 
-     private Integer cdcIdUsuario;
+     private int cdcIdUsuario;
      private String cdcNome;
      private String cdcApelido;
      private String cdcCpf;
@@ -34,7 +34,7 @@ public class CdcUsuario  implements java.io.Serializable {
      private String cdcSenha;
      private int cdcNivel;
      private String cdcAtivo;
-     private Set cdcVendases = new HashSet(0);
+     
 
     public CdcUsuario() {
     }
@@ -47,7 +47,7 @@ public class CdcUsuario  implements java.io.Serializable {
         this.cdcSenha = cdcSenha;
         this.cdcNivel = cdcNivel;
     }
-    public CdcUsuario(String cdcNome, String cdcApelido, String cdcCpf, Date cdcDataNas, String cdcSenha, int cdcNivel, String cdcAtivo, Set cdcVendases) {
+    public CdcUsuario(String cdcNome, String cdcApelido, String cdcCpf, Date cdcDataNas, String cdcSenha, int cdcNivel, String cdcAtivo) {
        this.cdcNome = cdcNome;
        this.cdcApelido = cdcApelido;
        this.cdcCpf = cdcCpf;
@@ -55,18 +55,18 @@ public class CdcUsuario  implements java.io.Serializable {
        this.cdcSenha = cdcSenha;
        this.cdcNivel = cdcNivel;
        this.cdcAtivo = cdcAtivo;
-       this.cdcVendases = cdcVendases;
+       
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="cdc_idUsuario", unique=true, nullable=false)
-    public Integer getCdcIdUsuario() {
+    public int getCdcIdUsuario() {
         return this.cdcIdUsuario;
     }
     
-    public void setCdcIdUsuario(Integer cdcIdUsuario) {
+    public void setCdcIdUsuario(int cdcIdUsuario) {
         this.cdcIdUsuario = cdcIdUsuario;
     }
 
@@ -140,14 +140,7 @@ public class CdcUsuario  implements java.io.Serializable {
         this.cdcAtivo = cdcAtivo;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="cdcUsuario")
-    public Set getCdcVendases() {
-        return this.cdcVendases;
-    }
-    
-    public void setCdcVendases(Set cdcVendases) {
-        this.cdcVendases = cdcVendases;
-    }
+
 
 
 

@@ -2,7 +2,6 @@ package bean;
 // Generated 06/10/2025 20:05:40 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,13 +25,13 @@ public class CdcVendasProdutos  implements java.io.Serializable {
      private Integer cdcIdVendasProdutos;
      private CdcVendas cdcVendas;
      private CdcVestidos cdcVestidos;
-     private BigDecimal cdcValorUnitario;
+     private double cdcValorUnitario;
      private int cdcQuantidade;
 
     public CdcVendasProdutos() {
     }
 
-    public CdcVendasProdutos(CdcVendas cdcVendas, CdcVestidos cdcVestidos, BigDecimal cdcValorUnitario, int cdcQuantidade) {
+    public CdcVendasProdutos(CdcVendas cdcVendas, CdcVestidos cdcVestidos, double cdcValorUnitario, int cdcQuantidade) {
        this.cdcVendas = cdcVendas;
        this.cdcVestidos = cdcVestidos;
        this.cdcValorUnitario = cdcValorUnitario;
@@ -73,11 +72,11 @@ public class CdcVendasProdutos  implements java.io.Serializable {
 
     
     @Column(name="cdc_valorUnitario", nullable=false, precision=10)
-    public BigDecimal getCdcValorUnitario() {
+    public double getCdcValorUnitario() {
         return this.cdcValorUnitario;
     }
     
-    public void setCdcValorUnitario(BigDecimal cdcValorUnitario) {
+    public void setCdcValorUnitario(double cdcValorUnitario) {
         this.cdcValorUnitario = cdcValorUnitario;
     }
 

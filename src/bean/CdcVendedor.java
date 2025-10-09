@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
 public class CdcVendedor  implements java.io.Serializable {
 
 
-     private Integer cdcIdVendedor;
+     private int cdcIdVendedor;
      private String cdcNome;
      private String cdcCpf;
      private Date cdcDataNas;
@@ -52,11 +52,11 @@ public class CdcVendedor  implements java.io.Serializable {
 
     
     @Column(name="cdc_idVendedor", unique=true, nullable=false)
-    public Integer getCdcIdVendedor() {
+    public int getCdcIdVendedor() {
         return this.cdcIdVendedor;
     }
     
-    public void setCdcIdVendedor(Integer cdcIdVendedor) {
+    public void setCdcIdVendedor(int cdcIdVendedor) {
         this.cdcIdVendedor = cdcIdVendedor;
     }
 
