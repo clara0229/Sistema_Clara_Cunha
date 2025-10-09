@@ -4,7 +4,7 @@
  */
 package view;
 //import bean.cdc_clientes;
-//ixmport dao.cdc_clientesDAO;
+//import dao.cdc_clientesDAO;
 //import dao.cdc_usuariosDAO;
 import java.util.List;
 
