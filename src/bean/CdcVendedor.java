@@ -27,19 +27,19 @@ public class CdcVendedor  implements java.io.Serializable {
      private String cdcCpf;
      private Date cdcDataNas;
      private Date cdcDataAdmissao;
-     private int cdcHorasTrab;
+     private Date cdcHorasTrab;
      private String cdcAtivo;
 
     public CdcVendedor() {
     }
 
 	
-    public CdcVendedor(String cdcNome, String cdcCpf, int cdcHorasTrab) {
+    public CdcVendedor(String cdcNome, String cdcCpf, Date cdcHorasTrab) {
         this.cdcNome = cdcNome;
         this.cdcCpf = cdcCpf;
         this.cdcHorasTrab = cdcHorasTrab;
     }
-    public CdcVendedor(String cdcNome, String cdcCpf, Date cdcDataNas, Date cdcDataAdmissao, int cdcHorasTrab, String cdcAtivo) {
+    public CdcVendedor(String cdcNome, String cdcCpf, Date cdcDataNas, Date cdcDataAdmissao, Date cdcHorasTrab, String cdcAtivo) {
        this.cdcNome = cdcNome;
        this.cdcCpf = cdcCpf;
        this.cdcDataNas = cdcDataNas;
@@ -102,11 +102,11 @@ public class CdcVendedor  implements java.io.Serializable {
 
     
     @Column(name="cdc_horasTrab", nullable=false)
-    public int getCdcHorasTrab() {
+    public Date getCdcHorasTrab() {
         return this.cdcHorasTrab;
     }
     
-    public void setCdcHorasTrab(int cdcHorasTrab) {
+    public void setCdcHorasTrab(Date cdcHorasTrab) {
         this.cdcHorasTrab = cdcHorasTrab;
     }
 

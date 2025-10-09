@@ -3,10 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package view;
-//import bean.cdc_vendas;
+import bean.CdcVestidos;
 //import bean.cdc_vestidos;
 //import dao.cdc_usuariosDAO;
 //import dao.cdc_vestidosDAO;
+import dao.ProdutosDAO;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class Cdc_jDlgPesquisarVestidos extends javax.swing.JDialog {
         Cdc_jDlgVestidos jDlgVestidos;
-       //Cdc_ControllerVestidos controllerVestidos;
+        Cdc_ControllerVestidos controllerVestidos;
 
     /**
      * Creates new form Cdc_jDlgPesquisarVestidos
@@ -24,11 +25,11 @@ public class Cdc_jDlgPesquisarVestidos extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        //cdc_vestidosDAO usuariosDao = new cdc_vestidosDAO();
-        //List lista = (List) usuariosDao.listAll();
-        //controllerVestidos = new Cdc_ControllerVestidos();
-        //controllerVestidos.setList(lista);
-        //jTable1.setModel(controllerVestidos);
+        ProdutosDAO produtosDao = new ProdutosDAO();
+        List lista = (List) produtosDao.listAll();
+        controllerVestidos = new Cdc_ControllerVestidos();
+        controllerVestidos.setList(lista);
+        jTable1.setModel(controllerVestidos);
     }
 
     public void setTelaPai(Cdc_jDlgVestidos jDlgVestidos){
@@ -92,9 +93,9 @@ public class Cdc_jDlgPesquisarVestidos extends javax.swing.JDialog {
 
     private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
         // TODO add your handling code here:
-        //int linSel = jTable1.getSelectedRow();
-        //cdc_vestidos vestidos = (cdc_vestidos) controllerVestidos.getBean(linSel);
-        //jDlgVestidos.beanView(vestidos);
+        int linSel = jTable1.getSelectedRow();
+        CdcVestidos vestidos = (CdcVestidos) controllerVestidos.getBean(linSel);
+        jDlgVestidos.beanView(vestidos);
         setVisible(false);
     }//GEN-LAST:event_jBtnOKActionPerformed
 

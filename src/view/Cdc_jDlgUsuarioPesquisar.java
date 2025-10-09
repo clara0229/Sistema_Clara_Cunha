@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package view;
-//import bean.cdc_usuarios;
+import bean.CdcUsuario;
 //import dao.cdc_usuariosDAO;
+import dao.UsuariosDAO;
 import java.util.List;
 /**
  *
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public class Cdc_jDlgUsuarioPesquisar extends javax.swing.JDialog {
         Cdc_jDlgUsuario jDlgUsuarios;
-       //Cdc_ControllerUsuario controllerUsuarios;
+        Cdc_ControllerUsuario controllerUsuarios;
 
     /**
      * Creates new form Cdc_jDlgUsuarioPesquisar
@@ -21,11 +22,11 @@ public class Cdc_jDlgUsuarioPesquisar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        //cdc_usuariosDAO usuariosDao = new cdc_usuariosDAO();
-        //List lista = (List) usuariosDao.listAll();
-        //controllerUsuarios = new Cdc_ControllerUsuario();
-        //controllerUsuarios.setList(lista);
-        //jTable1.setModel(controllerUsuarios);
+        UsuariosDAO usuariosDao = new UsuariosDAO();
+        List lista = (List) usuariosDao.listAll();
+        controllerUsuarios = new Cdc_ControllerUsuario();
+        controllerUsuarios.setList(lista);
+        jTable1.setModel(controllerUsuarios);
     }
 
     public void setTelaPai(Cdc_jDlgUsuario jDlgUsuarios){
@@ -98,9 +99,9 @@ public class Cdc_jDlgUsuarioPesquisar extends javax.swing.JDialog {
 
     private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
         // TODO add your handling code here:
-        //int linSel = jTable1.getSelectedRow();
-        //cdc_usuarios usuarios = (cdc_usuarios) controllerUsuarios.getBean(linSel);
-        //jDlgUsuarios.beanView(usuarios);
+        int linSel = jTable1.getSelectedRow();
+        CdcUsuario usuarios = (CdcUsuario) controllerUsuarios.getBean(linSel);
+        jDlgUsuarios.beanView(usuarios);
         setVisible(false);
     }//GEN-LAST:event_jBtnOKActionPerformed
 

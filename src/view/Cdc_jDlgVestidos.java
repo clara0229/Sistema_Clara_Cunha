@@ -4,6 +4,8 @@
  */
 package view;
 
+import bean.CdcVestidos;
+import dao.ProdutosDAO;
 import tools.Util;
 
 
@@ -14,6 +16,8 @@ import tools.Util;
  */
 public class Cdc_jDlgVestidos extends javax.swing.JDialog {
     boolean pesquisando = false;
+    private boolean incluir;
+    
     public Cdc_jDlgVestidos(java.awt.Frame parent, boolean modal) {
     super(parent, modal);
     initComponents();
@@ -21,6 +25,37 @@ public class Cdc_jDlgVestidos extends javax.swing.JDialog {
     setLocationRelativeTo(null);
     Util.habilitar(false, cdc_jTxtCodigo, cdc_JTxtNome, cdc_jCBocAtivo, cdc_jTxtPreco, cdc_jTxtModelo, cdc_jTxtCategoria, cdc_jTxtMarca, cdc_jBtnConfirmar, cdc_jBtnCancelar);
 }
+        public CdcVestidos viewBean() {
+            CdcVestidos vestidos = new CdcVestidos();
+            int codigo = Util.strToInt(cdc_jTxtCodigo.getText());
+            vestidos.setCdcIdVestidos(codigo);
+            vestidos.setCdcNome(cdc_JTxtNome.getText());
+            vestidos.setCdcPreco(Util.strToDuble(cdc_jTxtPreco.getText()));
+            vestidos.setCdcModelo(cdc_jTxtModelo.getText());
+            vestidos.setCdcCategoria(cdc_jTxtCategoria.getText());
+            vestidos.setCdcMarca(cdc_jTxtMarca.getText());
+            if (cdc_jCBocAtivo.isSelected() == true) {
+                vestidos.setCdcAtivo("S");
+            } else {
+                vestidos.setCdcAtivo("N");
+            }
+            return vestidos;
+    }
+
+        public void beanView(CdcVestidos vestidos) {
+            cdc_jTxtCodigo.setText(Util.intToStr(vestidos.getCdcIdVestidos()));
+            cdc_JTxtNome.setText(vestidos.getCdcNome());
+            cdc_jTxtPreco.setText(Util.doubleToStr(vestidos.getCdcPreco()));
+            cdc_jTxtModelo.setText(vestidos.getCdcModelo());
+            cdc_jTxtCategoria.setText(vestidos.getCdcCategoria());
+            cdc_jTxtMarca.setText(vestidos.getCdcMarca());
+            if (vestidos.getCdcAtivo().equals("S") == true) {
+                cdc_jCBocAtivo.setSelected(true);
+            } else {
+                cdc_jCBocAtivo.setSelected(false);
+            }
+}
+
 
    
 
@@ -237,7 +272,8 @@ public class Cdc_jDlgVestidos extends javax.swing.JDialog {
         Util.habilitar(true, cdc_jTxtCodigo, cdc_JTxtNome, cdc_jCBocAtivo, cdc_jTxtPreco, cdc_jTxtModelo, cdc_jTxtCategoria, cdc_jTxtMarca, cdc_jBtnConfirmar, cdc_jBtnCancelar);
         Util.habilitar(false, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jbtnPesquisar, cdc_jBtnIncluir);
         Util.limpar(cdc_jTxtCodigo, cdc_JTxtNome, cdc_jCBocAtivo);
-
+        cdc_jTxtCodigo.grabFocus();
+        incluir = true;
        
     }//GEN-LAST:event_cdc_jBtnIncluirActionPerformed
 
@@ -255,6 +291,12 @@ public class Cdc_jDlgVestidos extends javax.swing.JDialog {
 
     private void cdc_jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
+        ProdutosDAO produtosDAO = new ProdutosDAO();
+        if (incluir == true) {
+            produtosDAO.insert(viewBean());
+        } else {
+            produtosDAO.update(viewBean());
+        }
         Util.habilitar(false, cdc_jTxtCodigo, cdc_JTxtNome, cdc_jCBocAtivo, cdc_jTxtPreco, cdc_jTxtModelo, cdc_jTxtCategoria, cdc_jTxtMarca, cdc_jBtnConfirmar, cdc_jBtnCancelar);
         Util.habilitar(true, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jbtnPesquisar, cdc_jBtnIncluir);
 
@@ -282,7 +324,8 @@ public class Cdc_jDlgVestidos extends javax.swing.JDialog {
         // TODO add your handling code here:
         Util.habilitar(true, cdc_JTxtNome, cdc_jCBocAtivo, cdc_jTxtPreco, cdc_jTxtModelo, cdc_jTxtCategoria, cdc_jTxtMarca, cdc_jBtnConfirmar, cdc_jBtnCancelar);
         Util.habilitar(false, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jbtnPesquisar, cdc_jBtnIncluir);
-
+        cdc_JTxtNome.grabFocus();
+        incluir = false;
         
     }//GEN-LAST:event_cdc_jBtnAlterarActionPerformed
 

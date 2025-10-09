@@ -3,9 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package view;
-//import bean.cdc_clientes;
+import bean.CdcClientes;
 //ixmport dao.cdc_clientesDAO;
 //import dao.cdc_usuariosDAO;
+import dao.ClientesDAO;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class Cdc_jDlgClientesPesquisar extends javax.swing.JDialog {
         Cdc_JDlgClientes jDlgClientes;
-        //Cdc_ControllerClientes controllerClientes;
+        Cdc_ControllerClientes controllerClientes;
 
     /**
      * Creates new form Cdc_jDlgClientesPesquisar
@@ -23,11 +24,11 @@ public class Cdc_jDlgClientesPesquisar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        //cdc_clientesDAO clientesDAO = new cdc_clientesDAO();
-        //List lista = (List) clientesDAO.listAll();
-        //controllerClientes = new Cdc_ControllerClientes();
-        //controllerClientes.setList(lista);
-        //jTable1.setModel(controllerClientes);
+        ClientesDAO clientesDAO = new ClientesDAO();
+        List lista = (List) clientesDAO.listAll();
+        controllerClientes = new Cdc_ControllerClientes();
+        controllerClientes.setList(lista);
+        jTable1.setModel(controllerClientes);
     }
     
     public void setTelaPai(Cdc_JDlgClientes jDlgClientes){
@@ -105,9 +106,9 @@ public class Cdc_jDlgClientesPesquisar extends javax.swing.JDialog {
 
     private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
         // TODO add your handling code here:
-        //int linSel = jTable1.getSelectedRow();
-        //cdc_clientes clientes = (cdc_clientes) controllerClientes.getBean(linSel);
-        //jDlgClientes.beanView(clientes);
+        int linSel = jTable1.getSelectedRow();
+        CdcClientes clientes = (CdcClientes) controllerClientes.getBean(linSel);
+        jDlgClientes.beanView(clientes);
         setVisible(false);
     }//GEN-LAST:event_jBtnOKActionPerformed
 

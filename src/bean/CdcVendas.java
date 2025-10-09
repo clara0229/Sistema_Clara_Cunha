@@ -30,7 +30,7 @@ public class CdcVendas  implements java.io.Serializable {
 
      private int cdcIdVendas;
      private CdcClientes cdcClientes;
-     private CdcUsuario cdcUsuario;
+     private CdcVendedor cdcVendedor;
      private Date cdcDataVenda;
      private String cdcStatus;
      private String cdcFormaPaga;
@@ -41,16 +41,16 @@ public class CdcVendas  implements java.io.Serializable {
     }
 
 	
-    public CdcVendas(CdcClientes cdcClientes, CdcUsuario cdcUsuario, String cdcStatus, String cdcFormaPaga, double cdcTotal) {
+    public CdcVendas(CdcClientes cdcClientes, CdcVendedor cdcVendedor, String cdcStatus, String cdcFormaPaga, double cdcTotal) {
         this.cdcClientes = cdcClientes;
-        this.cdcUsuario = cdcUsuario;
+        this.cdcVendedor = cdcVendedor;
         this.cdcStatus = cdcStatus;
         this.cdcFormaPaga = cdcFormaPaga;
         this.cdcTotal = cdcTotal;
     }
-    public CdcVendas(CdcClientes cdcClientes, CdcUsuario cdcUsuario, Date cdcDataVenda, String cdcStatus, String cdcFormaPaga, double cdcTotal) {
+    public CdcVendas(CdcClientes cdcClientes, CdcVendedor cdcVendedor, Date cdcDataVenda, String cdcStatus, String cdcFormaPaga, double cdcTotal) {
        this.cdcClientes = cdcClientes;
-       this.cdcUsuario = cdcUsuario;
+       this.cdcVendedor = cdcVendedor;
        this.cdcDataVenda = cdcDataVenda;
        this.cdcStatus = cdcStatus;
        this.cdcFormaPaga = cdcFormaPaga;
@@ -82,12 +82,12 @@ public class CdcVendas  implements java.io.Serializable {
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="cdc_idVendedor", nullable=false)
-    public CdcUsuario getCdcUsuario() {
-        return this.cdcUsuario;
+    public CdcVendedor getCdcVendedor() {
+        return this.cdcVendedor;
     }
     
-    public void setCdcUsuario(CdcUsuario cdcUsuario) {
-        this.cdcUsuario = cdcUsuario;
+    public void setCdcVendedor(CdcVendedor cdcVendedor) {
+        this.cdcVendedor = cdcVendedor;
     }
 
     @Temporal(TemporalType.DATE)

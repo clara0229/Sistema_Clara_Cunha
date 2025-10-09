@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package view;
-//import bean.cdc_vendedor;
+import bean.CdcVendedor;
 //import dao.cdc_vendedorDAO;
+import dao.VendedorDAO;
 import java.util.List;
 /**
  *
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public class Cdc_jDlgVendedorPesquisar extends javax.swing.JDialog {
     Cdc_jDlgVendedor jDlgVendedor;
-       //Cdc_ControllerVendedor controllerVendedor;
+       Cdc_ControllerVendedor controllerVendedor;
 
     /**
      * Creates new form Cdc_jDlgVendedorPesquisar
@@ -21,11 +22,11 @@ public class Cdc_jDlgVendedorPesquisar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        //cdc_vendedorDAO vendedorDAO = new cdc_vendedorDAO();
-        //List lista = (List) vendedorDAO.listAll();
-        //controllerVendedor = new Cdc_ControllerVendedor();
-        //controllerVendedor.setList(lista);
-        //jTable1.setModel(controllerVendedor);
+        VendedorDAO vendedorDAO = new VendedorDAO();
+        List lista = (List) vendedorDAO.listAll();
+        controllerVendedor = new Cdc_ControllerVendedor();
+        controllerVendedor.setList(lista);
+        jTable1.setModel(controllerVendedor);
 
     }
     
@@ -96,9 +97,9 @@ public class Cdc_jDlgVendedorPesquisar extends javax.swing.JDialog {
 
     private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
         // TODO add your handling code here:
-        //int linSel = jTable1.getSelectedRow();
-        //cdc_vendedor vendedor = (cdc_vendedor) controllerVendedor.getBean(linSel);
-        //jDlgVendedor.beanView(vendedor);
+        int linSel = jTable1.getSelectedRow();
+        CdcVendedor vendedor = (CdcVendedor) controllerVendedor.getBean(linSel);
+        jDlgVendedor.beanView(vendedor);
         setVisible(false);
     }//GEN-LAST:event_jBtnOKActionPerformed
 

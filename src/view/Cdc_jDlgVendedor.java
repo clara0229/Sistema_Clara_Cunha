@@ -5,6 +5,8 @@
 package view;
 
 import tools.Util;
+import bean.CdcVendedor;
+import dao.VendedorDAO;
 
 
 /**
@@ -14,6 +16,8 @@ import tools.Util;
 public class Cdc_jDlgVendedor extends javax.swing.JDialog {
     
     boolean pesquisando = false;
+    private boolean incluir;
+
     public Cdc_jDlgVendedor(java.awt.Frame parent, boolean modal) {
     super(parent, modal);
     initComponents();
@@ -21,6 +25,37 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
     setLocationRelativeTo(null);
     Util.habilitar(false, cdc_jTxtCodigo, cdc_jTxtNome, cdc_jCBocAtivoSim, cdc_jFmtCpf, cdc_jFmtdataAdm, cdc_jFmtdataNasc, cdc_jTxtHorasTrabalhadas, cdc_jBtnConfirmar, cdc_jBtnCancelar);
 }
+        public CdcVendedor viewBean() {
+            CdcVendedor vendedor = new CdcVendedor();
+            int codigo = Util.strToInt(cdc_jTxtCodigo.getText());
+            vendedor.setCdcIdVendedor(codigo);
+            vendedor.setCdcNome(cdc_jTxtNome.getText());
+            vendedor.setCdcCpf(cdc_jFmtCpf.getText());
+            vendedor.setCdcDataAdmissao(Util.strToDate(cdc_jFmtdataAdm.getText()));
+            vendedor.setCdcDataNas(Util.strToDate(cdc_jFmtdataNasc.getText()));
+            vendedor.setCdcHorasTrab(Util.strToDate(cdc_jTxtHorasTrabalhadas.getText()));
+            if (cdc_jCBocAtivoSim.isSelected() == true) {
+                vendedor.setCdcAtivo("S");
+            } else {
+                vendedor.setCdcAtivo("N");
+            }
+            return vendedor;
+        }
+
+        public void beanView(CdcVendedor vendedor) {
+            cdc_jTxtCodigo.setText(Util.intToStr(vendedor.getCdcIdVendedor()));
+            cdc_jTxtNome.setText(vendedor.getCdcNome());
+            cdc_jFmtCpf.setText(vendedor.getCdcCpf());
+            cdc_jFmtdataAdm.setText(Util.dateToStr(vendedor.getCdcDataAdmissao()));
+            cdc_jFmtdataNasc.setText(Util.dateToStr(vendedor.getCdcDataNas()));
+            cdc_jTxtHorasTrabalhadas.setText(Util.dateToStr(vendedor.getCdcHorasTrab()));
+            if (vendedor.getCdcAtivo().equals("S") == true) {
+                cdc_jCBocAtivoSim.setSelected(true);
+            } else {
+                cdc_jCBocAtivoSim.setSelected(false);
+            }
+}
+
 
   
     
@@ -269,7 +304,8 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
         Util.habilitar(true, cdc_jTxtCodigo, cdc_jTxtNome, cdc_jCBocAtivoSim, cdc_jFmtCpf, cdc_jFmtdataAdm, cdc_jFmtdataNasc, cdc_jTxtHorasTrabalhadas, cdc_jBtnConfirmar, cdc_jBtnCancelar);
         Util.habilitar(false, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jbtnPesquisar, cdc_jBtnIncluir);
         Util.limpar(cdc_jTxtCodigo, cdc_jTxtNome);
-
+        cdc_jTxtCodigo.grabFocus();
+        incluir = true;
        
     }//GEN-LAST:event_cdc_jBtnIncluirActionPerformed
 
@@ -287,6 +323,12 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
 
     private void cdc_jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
+        VendedorDAO vendedorDAO = new VendedorDAO();
+        if (incluir == true) {
+            vendedorDAO.insert(viewBean());
+        } else {
+            vendedorDAO.update(viewBean());
+        }
         Util.habilitar(false, cdc_jTxtCodigo, cdc_jTxtNome, cdc_jCBocAtivoSim, cdc_jFmtCpf, cdc_jFmtdataAdm, cdc_jFmtdataNasc, cdc_jTxtHorasTrabalhadas, cdc_jBtnConfirmar, cdc_jBtnCancelar);
         Util.habilitar(true, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jbtnPesquisar, cdc_jBtnIncluir);
 
@@ -321,7 +363,8 @@ Util.habilitar(true, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jbtnPesquisar, cdc_jB
         // TODO add your handling code here:
         Util.habilitar(true, cdc_jTxtNome, cdc_jCBocAtivoSim, cdc_jFmtCpf, cdc_jFmtdataAdm, cdc_jFmtdataNasc, cdc_jTxtHorasTrabalhadas, cdc_jBtnConfirmar, cdc_jBtnCancelar);
         Util.habilitar(false, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jbtnPesquisar, cdc_jBtnIncluir);
-
+        cdc_jTxtNome.grabFocus();
+        incluir = false;
         
     }//GEN-LAST:event_cdc_jBtnAlterarActionPerformed
 
