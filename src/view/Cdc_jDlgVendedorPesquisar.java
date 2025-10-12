@@ -27,12 +27,17 @@ public class Cdc_jDlgVendedorPesquisar extends javax.swing.JDialog {
         controllerVendedor = new Cdc_ControllerVendedor();
         controllerVendedor.setList(lista);
         jTable1.setModel(controllerVendedor);
+        contarRegistros();
 
     }
     
     public void setTelaPai(Cdc_jDlgVendedor jDlgVendedor){
         this.jDlgVendedor = jDlgVendedor;
     }
+    public void contarRegistros() {
+        int total = jTable1.getRowCount();
+        cdc_totalRegistros.setText("Total de Registros dos Vendedores: " + total);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,6 +51,7 @@ public class Cdc_jDlgVendedorPesquisar extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jBtnOK = new javax.swing.JButton();
+        cdc_totalRegistros = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -69,18 +75,23 @@ public class Cdc_jDlgVendedorPesquisar extends javax.swing.JDialog {
             }
         });
 
+        cdc_totalRegistros.setText("Total de Registros:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBtnOK)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(cdc_totalRegistros)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBtnOK))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,7 +99,9 @@ public class Cdc_jDlgVendedorPesquisar extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addComponent(jBtnOK)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtnOK)
+                    .addComponent(cdc_totalRegistros))
                 .addContainerGap())
         );
 
@@ -146,6 +159,7 @@ public class Cdc_jDlgVendedorPesquisar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel cdc_totalRegistros;
     private javax.swing.JButton jBtnOK;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

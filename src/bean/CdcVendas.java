@@ -32,8 +32,6 @@ public class CdcVendas  implements java.io.Serializable {
      private CdcClientes cdcClientes;
      private CdcVendedor cdcVendedor;
      private Date cdcDataVenda;
-     private String cdcStatus;
-     private String cdcFormaPaga;
      private double cdcTotal;
      private Set cdcVendasProdutoses = new HashSet(0);
 
@@ -44,21 +42,17 @@ public class CdcVendas  implements java.io.Serializable {
     public CdcVendas(CdcClientes cdcClientes, CdcVendedor cdcVendedor, String cdcStatus, String cdcFormaPaga, double cdcTotal) {
         this.cdcClientes = cdcClientes;
         this.cdcVendedor = cdcVendedor;
-        this.cdcStatus = cdcStatus;
-        this.cdcFormaPaga = cdcFormaPaga;
         this.cdcTotal = cdcTotal;
     }
     public CdcVendas(CdcClientes cdcClientes, CdcVendedor cdcVendedor, Date cdcDataVenda, String cdcStatus, String cdcFormaPaga, double cdcTotal) {
        this.cdcClientes = cdcClientes;
        this.cdcVendedor = cdcVendedor;
        this.cdcDataVenda = cdcDataVenda;
-       this.cdcStatus = cdcStatus;
-       this.cdcFormaPaga = cdcFormaPaga;
        this.cdcTotal = cdcTotal;
        this.cdcVendasProdutoses = cdcVendasProdutoses;
     }
    
-     @Id @GeneratedValue(strategy=IDENTITY)
+     @Id 
 
     
     @Column(name="cdc_idVendas", unique=true, nullable=false)
@@ -99,27 +93,6 @@ public class CdcVendas  implements java.io.Serializable {
     public void setCdcDataVenda(Date cdcDataVenda) {
         this.cdcDataVenda = cdcDataVenda;
     }
-
-    
-    @Column(name="cdc_status", nullable=false, length=12)
-    public String getCdcStatus() {
-        return this.cdcStatus;
-    }
-    
-    public void setCdcStatus(String cdcStatus) {
-        this.cdcStatus = cdcStatus;
-    }
-
-    
-    @Column(name="cdc_formaPaga", nullable=false, length=30)
-    public String getCdcFormaPaga() {
-        return this.cdcFormaPaga;
-    }
-    
-    public void setCdcFormaPaga(String cdcFormaPaga) {
-        this.cdcFormaPaga = cdcFormaPaga;
-    }
-
     
     @Column(name="cdc_total", nullable=false, precision=10)
     public double getCdcTotal() {

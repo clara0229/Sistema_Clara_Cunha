@@ -3,43 +3,44 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package view;
-import bean.CdcVestidos;
-//import bean.cdc_vestidos;
-//import dao.cdc_usuariosDAO;
-//import dao.cdc_vestidosDAO;
-import dao.ProdutosDAO;
+import bean.CdcVendas;
+import bean.CdcVendedor;
+import dao.Cdc_vendasDAO;
+//import dao.cdc_vendasDAO;
+import dao.VendedorDAO;
 import java.util.List;
-
 /**
  *
  * @author clari
  */
-public class Cdc_jDlgPesquisarVestidos extends javax.swing.JDialog {
-        Cdc_jDlgVestidos jDlgVestidos;
-        Cdc_ControllerVestidos controllerVestidos;
+public class Cdc_jDlgVendasPesquisar extends javax.swing.JDialog {
+    Cdc_jDlgVendas jDlgVendas;
+       Cdc_ControllerVendas controllerVendas;
 
     /**
-     * Creates new form Cdc_jDlgPesquisarVestidos
+     * Creates new form Cdc_jDlgVendasPesquisar
      */
-    public Cdc_jDlgPesquisarVestidos(java.awt.Frame parent, boolean modal) {
+    public Cdc_jDlgVendasPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        ProdutosDAO produtosDao = new ProdutosDAO();
-        List lista = (List) produtosDao.listAll();
-        controllerVestidos = new Cdc_ControllerVestidos();
-        controllerVestidos.setList(lista);
-        jTable1.setModel(controllerVestidos);
+        Cdc_vendasDAO vendasDAO = new Cdc_vendasDAO();
+        List lista = (List) vendasDAO.listAll();
+        controllerVendas = new Cdc_ControllerVendas();
+        controllerVendas.setList(lista);
+        jTable1.setModel(controllerVendas);
         contarRegistros();
-    }
 
-    public void setTelaPai(Cdc_jDlgVestidos jDlgVestidos){
-        this.jDlgVestidos = jDlgVestidos;
+    }
+    
+    public void setTelaPai(Cdc_jDlgVendas jDlgVendas){
+        this.jDlgVendas = jDlgVendas;
     }
     public void contarRegistros() {
-    int total = jTable1.getRowCount();
-    cdc_totalRegistros.setText("Total de registros dos Vestidos: " + total);
+        int total = jTable1.getRowCount();
+        cdc_totalRegistros.setText("Total de Registros das Vendas: " + total);
 }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,22 +83,25 @@ public class Cdc_jDlgPesquisarVestidos extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cdc_totalRegistros)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBtnOK))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(cdc_totalRegistros)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBtnOK))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnOK)
                     .addComponent(cdc_totalRegistros))
                 .addContainerGap())
@@ -109,8 +113,8 @@ public class Cdc_jDlgPesquisarVestidos extends javax.swing.JDialog {
     private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
         // TODO add your handling code here:
         int linSel = jTable1.getSelectedRow();
-        CdcVestidos vestidos = (CdcVestidos) controllerVestidos.getBean(linSel);
-        jDlgVestidos.beanView(vestidos);
+        CdcVendas vendas = (CdcVendas) controllerVendas.getBean(linSel);
+        jDlgVendas.beanView(vendas);
         setVisible(false);
     }//GEN-LAST:event_jBtnOKActionPerformed
 
@@ -131,20 +135,21 @@ public class Cdc_jDlgPesquisarVestidos extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cdc_jDlgPesquisarVestidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cdc_jDlgVendasPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cdc_jDlgPesquisarVestidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cdc_jDlgVendasPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cdc_jDlgPesquisarVestidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cdc_jDlgVendasPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cdc_jDlgPesquisarVestidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cdc_jDlgVendasPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Cdc_jDlgPesquisarVestidos dialog = new Cdc_jDlgPesquisarVestidos(new javax.swing.JFrame(), true);
+                Cdc_jDlgVendasPesquisar dialog = new Cdc_jDlgVendasPesquisar(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

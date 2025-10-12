@@ -58,7 +58,7 @@ public class CdcUsuario  implements java.io.Serializable {
        
     }
    
-     @Id @GeneratedValue(strategy=IDENTITY)
+     @Id 
 
     
     @Column(name="cdc_idUsuario", unique=true, nullable=false)

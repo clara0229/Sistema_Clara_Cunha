@@ -48,7 +48,7 @@ public class CdcVestidos  implements java.io.Serializable {
        this.cdcAtivo = cdcAtivo;
     }
    
-     @Id @GeneratedValue(strategy=IDENTITY)
+     @Id 
 
     
     @Column(name="cdc_idVestidos", unique=true, nullable=false)

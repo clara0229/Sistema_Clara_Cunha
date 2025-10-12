@@ -27,11 +27,16 @@ public class Cdc_jDlgUsuarioPesquisar extends javax.swing.JDialog {
         controllerUsuarios = new Cdc_ControllerUsuario();
         controllerUsuarios.setList(lista);
         jTable1.setModel(controllerUsuarios);
+        contarRegistros();
     }
 
     public void setTelaPai(Cdc_jDlgUsuario jDlgUsuarios){
         this.jDlgUsuarios = jDlgUsuarios;
     }
+    public void contarRegistros() {
+    int total = jTable1.getRowCount();
+    cdc_totalRegistros.setText("Total de registros dos Usuários: " + total);
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,6 +49,7 @@ public class Cdc_jDlgUsuarioPesquisar extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jBtnOK = new javax.swing.JButton();
+        cdc_totalRegistros = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -67,12 +73,16 @@ public class Cdc_jDlgUsuarioPesquisar extends javax.swing.JDialog {
             }
         });
 
+        cdc_totalRegistros.setText("Total de Registros:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(352, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(cdc_totalRegistros)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
                 .addComponent(jBtnOK)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,10 +93,15 @@ public class Cdc_jDlgUsuarioPesquisar extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(322, Short.MAX_VALUE)
-                .addComponent(jBtnOK)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(313, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jBtnOK)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(cdc_totalRegistros)
+                        .addGap(31, 31, 31))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(12, 12, 12)
@@ -148,6 +163,7 @@ public class Cdc_jDlgUsuarioPesquisar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel cdc_totalRegistros;
     private javax.swing.JButton jBtnOK;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

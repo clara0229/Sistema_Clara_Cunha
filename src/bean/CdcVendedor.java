@@ -48,7 +48,7 @@ public class CdcVendedor  implements java.io.Serializable {
        this.cdcAtivo = cdcAtivo;
     }
    
-     @Id @GeneratedValue(strategy=IDENTITY)
+     @Id 
 
     
     @Column(name="cdc_idVendedor", unique=true, nullable=false)
@@ -101,7 +101,7 @@ public class CdcVendedor  implements java.io.Serializable {
     }
 
     
-    @Column(name="cdc_horasTrab", nullable=false)
+    @Column(name="cdc_horasTrab", nullable=true)
     public Date getCdcHorasTrab() {
         return this.cdcHorasTrab;
     }

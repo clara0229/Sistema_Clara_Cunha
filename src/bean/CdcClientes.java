@@ -75,8 +75,7 @@ public class CdcClientes  implements java.io.Serializable {
        
     }
    
-     @Id @GeneratedValue(strategy=IDENTITY)
-
+     @Id 
     
     @Column(name="cdc_idClientes", unique=true, nullable=false)
     public int getCdcIdClientes() {
