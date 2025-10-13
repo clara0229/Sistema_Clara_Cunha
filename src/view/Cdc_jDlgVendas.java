@@ -11,15 +11,22 @@ import bean.CdcVendas;
 import bean.CdcVendedor;
 import dao.Cdc_vendasDAO;
 import dao.VendedorDAO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import tools.Util;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
  * @author u1845853
  */
 public class Cdc_jDlgVendas extends javax.swing.JDialog {
-
+        private MaskFormatter mascaraDataNasc;
     /**
      * Creates new form JDlgCdcVendas
      */
@@ -42,21 +49,41 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
             List<CdcVendedor> listaVendedores = vendedorDAO.listAll();
             for (CdcVendedor vendedor : listaVendedores) {
                 cdc_jCboVendedor.addItem(vendedor);
-}
+        try {
+            mascaraDataNasc = new MaskFormatter("##/##/####");
+            cdc_jFmtData.setFormatterFactory(new DefaultFormatterFactory(mascaraDataNasc));
+        } catch (ParseException ex) {
+            Logger.getLogger(Cdc_jDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            }
     }
 
     public CdcVendas viewBean() {
         CdcVendas vendas = new CdcVendas();
         vendas.setCdcIdVendas(Util.strToInt(cdc_jTxtCodigo.getText()));
-        vendas.setCdcClientes((CdcClientes) cdc_jCboClientes.getSelectedItem() );
+        
+        
+        vendas.setCdcClientes((CdcClientes) cdc_jCboVendedor.getSelectedItem());
         vendas.setCdcVendedor((CdcVendedor) cdc_jCboVendedor.getSelectedItem());
-        //data
-        vendas.setCdcTotal(Util.strToDuble(cdc_jTxtTotal.getText()));
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    Date dataNasc = formato.parse(cdc_jFmtData.getText());
+                    vendas.setCdcDataVenda(dataNasc);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Cdc_JDlgClientes.class.getName()).log(Level.SEVERE, null, ex);
+                }        vendas.setCdcTotal(Util.strToDuble(cdc_jTxtTotal.getText()));
         return vendas;
     }
     
     public void beanView(CdcVendas vendas) {
         cdc_jCboClientes.setSelectedItem(vendas.getCdcClientes());
+        cdc_jCboVendedor.setSelectedItem(vendas.getCdcVendedor());
+        cdc_jTxtCodigo.setText(Util.intToStr(vendas.getCdcIdVendas()));
+            cdc_jTxtTotal.setText(Util.doubleToStr(vendas.getCdcTotal()));
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            String dataNasc = formato.format(vendas.getCdcDataVenda());
+            cdc_jFmtData.setText(dataNasc);
+        
     }
 
     /**
@@ -335,6 +362,10 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
         Util.habilitar(false, cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor, cdc_jTxtTotal,
                 cdc_jBtnConfirmar, cdc_jBtnCancelar, cdc_jBtnIncluirProd, cdc_jBtnAlterarProd, cdc_jBtnExcluirProd);
         Util.habilitar(true, cdc_jBtnIncluir, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jBtnPesquisar);
+        Util.limpar(cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor, cdc_jTxtTotal);
+        
+        
+        
         
     }//GEN-LAST:event_cdc_jBtnConfirmarActionPerformed
 
@@ -343,7 +374,8 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
         Util.habilitar(true, cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor, cdc_jTxtTotal,
                 cdc_jBtnConfirmar, cdc_jBtnCancelar, cdc_jBtnIncluirProd, cdc_jBtnAlterarProd, cdc_jBtnExcluirProd);
         Util.habilitar(false, cdc_jBtnIncluir, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jBtnPesquisar);
-        
+        Util.limpar(cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor, cdc_jTxtTotal);
+       
     }//GEN-LAST:event_cdc_jBtnCancelarActionPerformed
 
     private void cdc_jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnPesquisarActionPerformed

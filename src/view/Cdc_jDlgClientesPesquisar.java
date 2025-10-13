@@ -50,18 +50,10 @@ public class Cdc_jDlgClientesPesquisar extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jBtnOK = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jBtnOK1 = new javax.swing.JButton();
         cdc_totalRegistros = new javax.swing.JLabel();
-
-        jBtnOK.setText("OK");
-        jBtnOK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnOKActionPerformed(evt);
-            }
-        });
+        jBtnOk = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -78,14 +70,15 @@ public class Cdc_jDlgClientesPesquisar extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jBtnOK1.setText("OK");
-        jBtnOK1.addActionListener(new java.awt.event.ActionListener() {
+        cdc_totalRegistros.setText("Total de Registros:");
+
+        jBtnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/confirmar.png"))); // NOI18N
+        jBtnOk.setText("OK");
+        jBtnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnOK1ActionPerformed(evt);
+                jBtnOkActionPerformed(evt);
             }
         });
-
-        cdc_totalRegistros.setText("Total de Registros:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,7 +93,7 @@ public class Cdc_jDlgClientesPesquisar extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cdc_totalRegistros)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBtnOK1)))
+                        .addComponent(jBtnOk)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -111,27 +104,20 @@ public class Cdc_jDlgClientesPesquisar extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cdc_totalRegistros)
-                    .addComponent(jBtnOK1))
+                    .addComponent(jBtnOk))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
+    private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
         int linSel = jTable1.getSelectedRow();
         CdcClientes clientes = (CdcClientes) controllerClientes.getBean(linSel);
         jDlgClientes.beanView(clientes);
         setVisible(false);
-    }//GEN-LAST:event_jBtnOKActionPerformed
-
-    private void jBtnOK1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOK1ActionPerformed
-        // TODO add your handling code here:
-        
-        setVisible(false);
-        
-    }//GEN-LAST:event_jBtnOK1ActionPerformed
+    }//GEN-LAST:event_jBtnOkActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,8 +163,7 @@ public class Cdc_jDlgClientesPesquisar extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel cdc_totalRegistros;
-    private javax.swing.JButton jBtnOK;
-    private javax.swing.JButton jBtnOK1;
+    private javax.swing.JButton jBtnOk;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

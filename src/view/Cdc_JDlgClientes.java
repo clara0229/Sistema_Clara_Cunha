@@ -6,6 +6,13 @@ package view;
 
 import bean.CdcClientes;
 import dao.ClientesDAO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 import tools.Util;
 
 
@@ -30,6 +37,7 @@ public class Cdc_JDlgClientes extends javax.swing.JDialog {
      */
     private boolean incluir;
     boolean pesquisando = false;
+    private MaskFormatter mascaraCpf, mascaraDataNasc;
     public Cdc_JDlgClientes(java.awt.Frame parent, boolean modal) {
     super(parent, modal);
     initComponents();
@@ -38,7 +46,16 @@ public class Cdc_JDlgClientes extends javax.swing.JDialog {
     Util.habilitar(false, cdc_jTxtCodigo, cdc_jFmtcpf, cdc_jTxtEmail, cdc_jTxtEndereco, cdc_jTxtBairro, cdc_jTxtCelular, cdc_jTxtNome, cdc_jTxtRg, cdc_jFmtdataNasc, cdc_jTxtCep, cdc_jTxtCidade, cdc_jTxtTelefone, cdc_jTxtSexo, cdc_jTxtEstado, cdc_jCBoxAtivo, 
                    cdc_jBtnConfirmar, cdc_jBtnCancelar);
     
-}
+    try {
+            mascaraCpf = new MaskFormatter("###.###.###-##");
+            mascaraDataNasc = new MaskFormatter("##/##/####");
+            cdc_jFmtcpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
+            cdc_jFmtdataNasc.setFormatterFactory(new DefaultFormatterFactory(mascaraDataNasc));
+        } catch (ParseException ex) {
+            Logger.getLogger(Cdc_JDlgClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
             public CdcClientes viewBean() {
                 CdcClientes clientes = new CdcClientes();
                 int codigo = Util.strToInt(cdc_jTxtCodigo.getText());
@@ -47,7 +64,13 @@ public class Cdc_JDlgClientes extends javax.swing.JDialog {
                 clientes.setCdcCpf(cdc_jFmtcpf.getText());
                 clientes.setCdcRg(cdc_jTxtRg.getText());
                 clientes.setCdcSexo(cdc_jTxtSexo.getText());
-                clientes.setCdcDataNas(Util.strToDate(cdc_jFmtdataNasc.getText()));
+                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    Date dataNasc = formato.parse(cdc_jFmtdataNasc.getText());
+                    clientes.setCdcDataNas(dataNasc);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Cdc_JDlgClientes.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 clientes.setCdcEmail(cdc_jTxtEmail.getText());
                 clientes.setCdcCep(cdc_jTxtCep.getText());
                 clientes.setCdcEndereco(cdc_jTxtEndereco.getText());
@@ -70,7 +93,9 @@ public class Cdc_JDlgClientes extends javax.swing.JDialog {
                 cdc_jFmtcpf.setText(clientes.getCdcCpf());
                 cdc_jTxtRg.setText(clientes.getCdcRg());
                 cdc_jTxtSexo.setText(clientes.getCdcSexo());
-                cdc_jFmtdataNasc.setText(Util.dateToStr(clientes.getCdcDataNas()));
+                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                String dataNasc = formato.format(clientes.getCdcDataNas());
+                cdc_jFmtdataNasc.setText(dataNasc);
                 cdc_jTxtEmail.setText(clientes.getCdcEmail());
                 cdc_jTxtCep.setText(clientes.getCdcCep());
                 cdc_jTxtEndereco.setText(clientes.getCdcEndereco());
@@ -458,6 +483,8 @@ public class Cdc_JDlgClientes extends javax.swing.JDialog {
         }
         Util.habilitar(false, cdc_jTxtCodigo, cdc_jFmtcpf, cdc_jTxtEmail, cdc_jTxtEndereco, cdc_jTxtBairro, cdc_jTxtCelular, cdc_jTxtNome, cdc_jTxtRg, cdc_jFmtdataNasc, cdc_jTxtCep, cdc_jTxtCidade, cdc_jTxtTelefone, cdc_jTxtSexo, cdc_jTxtEstado, cdc_jCBoxAtivo, cdc_jBtnConfirmar, cdc_jBtnCancelar);
         Util.habilitar(true, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jbtnPesquisar, cdc_jBtnIncluir);
+                Util.limpar(cdc_jTxtCodigo, cdc_jTxtNome, cdc_jTxtEmail, cdc_jTxtEndereco, cdc_jTxtBairro, cdc_jTxtCelular, cdc_jTxtRg, cdc_jFmtdataNasc, cdc_jTxtCep, cdc_jTxtCidade, cdc_jTxtTelefone, cdc_jTxtSexo, cdc_jTxtEstado);
+
 
          
     }//GEN-LAST:event_cdc_jBtnConfirmarActionPerformed
@@ -483,6 +510,8 @@ public class Cdc_JDlgClientes extends javax.swing.JDialog {
         // TODO add your handling code here:
         Util.habilitar(false, cdc_jTxtCodigo, cdc_jFmtcpf, cdc_jTxtEmail, cdc_jTxtEndereco, cdc_jTxtBairro, cdc_jTxtCelular, cdc_jTxtNome, cdc_jTxtRg, cdc_jFmtdataNasc, cdc_jTxtCep, cdc_jTxtCidade, cdc_jTxtTelefone, cdc_jTxtSexo, cdc_jTxtEstado, cdc_jCBoxAtivo, cdc_jBtnConfirmar, cdc_jBtnCancelar);
         Util.habilitar(true, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jbtnPesquisar, cdc_jBtnIncluir);
+        Util.limpar(cdc_jTxtCodigo, cdc_jTxtNome, cdc_jTxtEmail, cdc_jTxtEndereco, cdc_jTxtBairro, cdc_jTxtCelular, cdc_jTxtRg, cdc_jFmtdataNasc, cdc_jTxtCep, cdc_jTxtCidade, cdc_jTxtTelefone, cdc_jTxtSexo, cdc_jTxtEstado);
+
 
         
     }//GEN-LAST:event_cdc_jBtnCancelarActionPerformed
