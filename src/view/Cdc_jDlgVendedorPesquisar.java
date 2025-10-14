@@ -12,7 +12,7 @@ import java.util.List;
  * @author clari
  */
 public class Cdc_jDlgVendedorPesquisar extends javax.swing.JDialog {
-    Cdc_jDlgVendedor jDlgVendedor;
+        Cdc_jDlgVendedor jDlgVendedor;
        Cdc_ControllerVendedor controllerVendedor;
 
     /**
