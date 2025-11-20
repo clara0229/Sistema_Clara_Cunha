@@ -108,6 +108,9 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cdc_jCboProdutosActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox&lt;CdcVestidos&gt;()"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;CdcVestidos&gt;"/>
@@ -119,6 +122,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cdc_jTxtQuantidade">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cdc_jTxtQuantidadeKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="cdc_jTxtValorUnitario">
     </Component>
@@ -133,6 +139,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cdc_jTxtTotal">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cdc_jTxtTotalActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnOk">
       <Properties>

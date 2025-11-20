@@ -27,7 +27,7 @@ import javax.swing.text.MaskFormatter;
  * @author u1845853
  */
 public class Cdc_jDlgVendas extends javax.swing.JDialog {
-        private MaskFormatter mascaraDataNasc;
+        
     /**
      * Creates new form JDlgCdcVendas
      */
@@ -52,12 +52,7 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
             List<CdcVendedor> listaVendedores = vendedorDAO.listAll();
             for (CdcVendedor vendedor : listaVendedores) {
                 cdc_jCboVendedor.addItem(vendedor);
-        try {
-            mascaraDataNasc = new MaskFormatter("##/##/####");
-            cdc_jFmtData.setFormatterFactory(new DefaultFormatterFactory(mascaraDataNasc));
-        } catch (ParseException ex) {
-            Logger.getLogger(Cdc_jDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
             }
             
         cdc_ControllerVendasProdutos = new Cdc_ControllerVendasProdutos();
@@ -68,17 +63,10 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
     public CdcVendas viewBean() {
         CdcVendas vendas = new CdcVendas();
         vendas.setCdcIdVendas(Util.strToInt(cdc_jTxtCodigo.getText()));
-        
-        
-        vendas.setCdcClientes((CdcClientes) cdc_jCboVendedor.getSelectedItem());
+        vendas.setCdcClientes((CdcClientes) cdc_jCboClientes.getSelectedItem());
         vendas.setCdcVendedor((CdcVendedor) cdc_jCboVendedor.getSelectedItem());
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-                try {
-                    Date dataNasc = formato.parse(cdc_jFmtData.getText());
-                    vendas.setCdcDataVenda(dataNasc);
-                } catch (ParseException ex) {
-                    Logger.getLogger(Cdc_JDlgClientes.class.getName()).log(Level.SEVERE, null, ex);
-                }        vendas.setCdcTotal(Util.strToDouble(cdc_jTxtTotal.getText()));
+        vendas.setCdcDataVenda(Util.strToDate(cdc_jFmtData.getText()));  
+        vendas.setCdcTotal(Util.strToDouble(cdc_jTxtTotal.getText()));
         return vendas;
     }
     
@@ -86,12 +74,22 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
         cdc_jCboClientes.setSelectedItem(vendas.getCdcClientes());
         cdc_jCboVendedor.setSelectedItem(vendas.getCdcVendedor());
         cdc_jTxtCodigo.setText(Util.intToStr(vendas.getCdcIdVendas()));
-            cdc_jTxtTotal.setText(Util.doubleToStr(vendas.getCdcTotal()));
-            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-            String dataNasc = formato.format(vendas.getCdcDataVenda());
-            cdc_jFmtData.setText(dataNasc);
+        cdc_jTxtTotal.setText(Util.doubleToStr(vendas.getCdcTotal()));
+        cdc_jFmtData.setText(Util.dateToStr(vendas.getCdcDataVenda()));
+            
         
     }
+    
+    
+    public void somaTotaisTabelaa() {
+        double total = 0;
+        for (int i = 0; i < cdc_jTable2.getRowCount(); i++) {
+            Double valor = (Double) cdc_jTable2.getValueAt(i, 4);
+            total += valor;
+        }
+        cdc_jTxtTotal.setText(String.valueOf(total));
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -141,6 +139,12 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
         jLabel4.setText("Vendedor");
 
         jLabel5.setText("Total");
+
+        cdc_jTxtTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cdc_jTxtTotalActionPerformed(evt);
+            }
+        });
 
         cdc_jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -332,7 +336,7 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
 
     private void cdc_jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor, cdc_jTxtTotal,
+        Util.habilitar(true, cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor,
                 cdc_jBtnConfirmar, cdc_jBtnCancelar, cdc_jBtnIncluirProd, cdc_jBtnAlterarProd, cdc_jBtnExcluirProd);
         Util.habilitar(false, cdc_jBtnIncluir, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jBtnPesquisar);
         Util.limpar(cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor, cdc_jTxtTotal);
@@ -395,10 +399,16 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
     private void cdc_jBtnExcluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnExcluirProdActionPerformed
         // TODO add your handling code here:
         
-        if(Util.perguntar("Deseja Excluir?" )== true ){
-            int rowIndex = cdc_jTable2.getSelectedRow();
-            cdc_ControllerVendasProdutos.removeBean(rowIndex);
-        }
+        int rowIndex = cdc_jTable2.getSelectedRow();
+                if (rowIndex == -1) {
+                    Util.mensagem("Selecione uma linhaaa primeiro");
+                    return;
+                }
+                if (Util.perguntar("Deseja Excluir?") == true) {
+                    cdc_ControllerVendasProdutos.removeBean(rowIndex);
+        somaTotaisTabelaa();
+                }
+
     }//GEN-LAST:event_cdc_jBtnExcluirProdActionPerformed
 
     private void cdc_jBtnAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnAlterarProdActionPerformed
@@ -412,6 +422,7 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
         Cdc_JDlgVendasProdutos jDlgCdcVendasProdutos = new Cdc_JDlgVendasProdutos(null, true);
         jDlgCdcVendasProdutos.setTelaAnterior(this);
         jDlgCdcVendasProdutos.setVisible(true);
+        somaTotaisTabelaa();
         
         
     }//GEN-LAST:event_cdc_jBtnIncluirProdActionPerformed
@@ -423,6 +434,11 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
     private void cdc_jFmtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jFmtDataActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cdc_jFmtDataActionPerformed
+
+    private void cdc_jTxtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jTxtTotalActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cdc_jTxtTotalActionPerformed
 
     /**
      * @param args the command line arguments

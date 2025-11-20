@@ -64,11 +64,29 @@ public class Cdc_JDlgVendasProdutos extends javax.swing.JDialog {
 
         jLabel1.setText("Produtos");
 
+        cdc_jCboProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cdc_jCboProdutosActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("Quantidade");
+
+        cdc_jTxtQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cdc_jTxtQuantidadeKeyReleased(evt);
+            }
+        });
 
         jLabel3.setText("Valor Unitário");
 
         jLabel4.setText("Total");
+
+        cdc_jTxtTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cdc_jTxtTotalActionPerformed(evt);
+            }
+        });
 
         jBtnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/confirmar.png"))); // NOI18N
         jBtnOk.setText("Ok");
@@ -162,6 +180,30 @@ public class Cdc_JDlgVendasProdutos extends javax.swing.JDialog {
         // TODO add your handling code here:
         setVisible(false);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
+
+    private void cdc_jCboProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jCboProdutosActionPerformed
+        // TODO add your handling code here:
+        CdcVestidos vestidos = (CdcVestidos) cdc_jCboProdutos.getSelectedItem();
+        cdc_jTxtValorUnitario.setText(Util.doubleToStr(vestidos.getCdcPreco()));
+        int quant = Util.strToInt(cdc_jTxtQuantidade.getText());
+        cdc_jTxtTotal.setText(Util.doubleToStr(quant * vestidos.getCdcPreco()));
+
+    }//GEN-LAST:event_cdc_jCboProdutosActionPerformed
+
+    private void cdc_jTxtQuantidadeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cdc_jTxtQuantidadeKeyReleased
+        // TODO add your handling code here:
+        if (cdc_jTxtQuantidade.getText().isEmpty()){
+            cdc_jTxtTotal.setText("");
+        } else {
+        CdcVestidos vestidos = (CdcVestidos) cdc_jCboProdutos.getSelectedItem();
+        int quant = Util.strToInt(cdc_jTxtQuantidade.getText());
+        cdc_jTxtTotal.setText(Util.doubleToStr(quant*vestidos.getCdcPreco()));
+        }
+    }//GEN-LAST:event_cdc_jTxtQuantidadeKeyReleased
+
+    private void cdc_jTxtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jTxtTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cdc_jTxtTotalActionPerformed
 
     /**
      * @param args the command line arguments
