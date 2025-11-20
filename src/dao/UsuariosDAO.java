@@ -6,8 +6,13 @@
 package dao;
 
 import bean.CdcUsuario;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
@@ -60,10 +65,23 @@ public class UsuariosDAO extends AbstractDAO {
         session.getTransaction().commit();
         return (ArrayList) lista;
 }
+        public boolean listLogin(String user, String pass) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(CdcUsuario.class);
+        criteria.add(Restrictions.eq("cdcNome", user));
+        criteria.add(Restrictions.eq("cdcSenha", pass));
+
+        List resultado = criteria.list();
+        session.getTransaction().commit();
+
+        return !resultado.isEmpty();
+}
+
 
 
     public static void main(String[] args) {
         UsuariosDAO usuariosDAO = new UsuariosDAO();
         usuariosDAO.listAll();
     }
-}
+
+    }
