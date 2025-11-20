@@ -24,7 +24,7 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
     
     boolean pesquisando = false;
     private boolean incluir;
-    private MaskFormatter mascaraCpf, mascaraDataNasc;
+    private MaskFormatter mascaraCpf;
 
     public Cdc_jDlgVendedor(java.awt.Frame parent, boolean modal) {
     super(parent, modal);
@@ -34,10 +34,8 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
     Util.habilitar(false, cdc_jTxtCodigo, cdc_jTxtNome, cdc_jCBocAtivoSim, cdc_jFmtCpf, cdc_jFmtdataAdm, cdc_jFmtdataNasc, cdc_jTxtHorasTrabalhadas, cdc_jBtnConfirmar, cdc_jBtnCancelar);
     try {
             mascaraCpf = new MaskFormatter("###.###.###-##");
-            mascaraDataNasc = new MaskFormatter("##/##/####");
             cdc_jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
-            cdc_jFmtdataAdm.setFormatterFactory(new DefaultFormatterFactory(mascaraDataNasc));
-            cdc_jFmtdataNasc.setFormatterFactory(new DefaultFormatterFactory(mascaraDataNasc));
+            
         } catch (ParseException ex) {
             Logger.getLogger(Cdc_jDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -48,20 +46,9 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
             vendedor.setCdcIdVendedor(codigo);
             vendedor.setCdcNome(cdc_jTxtNome.getText());
             vendedor.setCdcCpf(cdc_jFmtCpf.getText());
-            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-                try {
-                    Date dataNasc = formato.parse(cdc_jFmtdataNasc.getText());
-                    vendedor.setCdcDataNas(dataNasc);
-                } catch (ParseException ex) {
-                    Logger.getLogger(Cdc_jDlgVendedor.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                    Date dataNasc = formato.parse(cdc_jFmtdataAdm.getText());
-                    vendedor.setCdcDataNas(dataNasc);
-                } catch (ParseException ex) {
-                    Logger.getLogger(Cdc_jDlgVendedor.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            vendedor.setCdcHorasTrab(Util.strToDate(cdc_jTxtHorasTrabalhadas.getText()));
+            vendedor.setCdcDataAdmissao(Util.strToDate(cdc_jFmtdataAdm.getText()));  
+            vendedor.setCdcDataNas(Util.strToDate(cdc_jFmtdataNasc.getText()));  
+            vendedor.setCdcHorasTrab(Util.strToInt(cdc_jTxtHorasTrabalhadas.getText()));
             if (cdc_jCBocAtivoSim.isSelected() == true) {
                 vendedor.setCdcAtivo("S");
             } else {
@@ -74,11 +61,9 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
             cdc_jTxtCodigo.setText(Util.intToStr(vendedor.getCdcIdVendedor()));
             cdc_jTxtNome.setText(vendedor.getCdcNome());
             cdc_jFmtCpf.setText(vendedor.getCdcCpf());
-            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-            String dataNasc = formato.format(vendedor.getCdcDataNas());
-            cdc_jFmtdataNasc.setText(dataNasc);
-            cdc_jFmtdataAdm.setText(dataNasc);
-            cdc_jTxtHorasTrabalhadas.setText(Util.dateToStr(vendedor.getCdcHorasTrab()));
+            cdc_jFmtdataAdm.setText(Util.dateToStr(vendedor.getCdcDataNas()));
+            cdc_jFmtdataNasc.setText(Util.dateToStr(vendedor.getCdcDataAdmissao()));
+            cdc_jTxtHorasTrabalhadas.setText(Util.intToStr(vendedor.getCdcHorasTrab()));
             if (vendedor.getCdcAtivo().equals("S") == true) {
                 cdc_jCBocAtivoSim.setSelected(true);
             } else {

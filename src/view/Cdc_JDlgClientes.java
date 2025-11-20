@@ -37,7 +37,8 @@ public class Cdc_JDlgClientes extends javax.swing.JDialog {
      */
     private boolean incluir;
     boolean pesquisando = false;
-    private MaskFormatter mascaraCpf, mascaraDataNasc;
+    private MaskFormatter mascaraCpf;
+    
     public Cdc_JDlgClientes(java.awt.Frame parent, boolean modal) {
     super(parent, modal);
     initComponents();
@@ -45,14 +46,11 @@ public class Cdc_JDlgClientes extends javax.swing.JDialog {
     setLocationRelativeTo(null);
     Util.habilitar(false, cdc_jTxtCodigo, cdc_jFmtcpf, cdc_jTxtEmail, cdc_jTxtEndereco, cdc_jTxtBairro, cdc_jTxtCelular, cdc_jTxtNome, cdc_jTxtRg, cdc_jFmtdataNasc, cdc_jTxtCep, cdc_jTxtCidade, cdc_jTxtTelefone, cdc_jTxtSexo, cdc_jTxtEstado, cdc_jCBoxAtivo, 
                    cdc_jBtnConfirmar, cdc_jBtnCancelar);
-    
     try {
             mascaraCpf = new MaskFormatter("###.###.###-##");
-            mascaraDataNasc = new MaskFormatter("##/##/####");
             cdc_jFmtcpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
-            cdc_jFmtdataNasc.setFormatterFactory(new DefaultFormatterFactory(mascaraDataNasc));
         } catch (ParseException ex) {
-            Logger.getLogger(Cdc_JDlgClientes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Cdc_jDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -64,13 +62,7 @@ public class Cdc_JDlgClientes extends javax.swing.JDialog {
                 clientes.setCdcCpf(cdc_jFmtcpf.getText());
                 clientes.setCdcRg(cdc_jTxtRg.getText());
                 clientes.setCdcSexo(cdc_jTxtSexo.getText());
-                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-                try {
-                    Date dataNasc = formato.parse(cdc_jFmtdataNasc.getText());
-                    clientes.setCdcDataNas(dataNasc);
-                } catch (ParseException ex) {
-                    Logger.getLogger(Cdc_JDlgClientes.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                clientes.setCdcDataNas(Util.strToDate(cdc_jFmtdataNasc.getText()));      
                 clientes.setCdcEmail(cdc_jTxtEmail.getText());
                 clientes.setCdcCep(cdc_jTxtCep.getText());
                 clientes.setCdcEndereco(cdc_jTxtEndereco.getText());
@@ -93,9 +85,7 @@ public class Cdc_JDlgClientes extends javax.swing.JDialog {
                 cdc_jFmtcpf.setText(clientes.getCdcCpf());
                 cdc_jTxtRg.setText(clientes.getCdcRg());
                 cdc_jTxtSexo.setText(clientes.getCdcSexo());
-                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-                String dataNasc = formato.format(clientes.getCdcDataNas());
-                cdc_jFmtdataNasc.setText(dataNasc);
+               cdc_jFmtdataNasc.setText(Util.dateToStr(clientes.getCdcDataNas()));
                 cdc_jTxtEmail.setText(clientes.getCdcEmail());
                 cdc_jTxtCep.setText(clientes.getCdcCep());
                 cdc_jTxtEndereco.setText(clientes.getCdcEndereco());
@@ -481,9 +471,9 @@ public class Cdc_JDlgClientes extends javax.swing.JDialog {
         } else {
             clientesDAO.update(viewBean());
         }
-        Util.habilitar(false, cdc_jTxtCodigo, cdc_jFmtcpf, cdc_jTxtEmail, cdc_jTxtEndereco, cdc_jTxtBairro, cdc_jTxtCelular, cdc_jTxtNome, cdc_jTxtRg, cdc_jFmtdataNasc, cdc_jTxtCep, cdc_jTxtCidade, cdc_jTxtTelefone, cdc_jTxtSexo, cdc_jTxtEstado, cdc_jCBoxAtivo, cdc_jBtnConfirmar, cdc_jBtnCancelar);
+        Util.habilitar(false, cdc_jTxtCodigo, cdc_jFmtcpf, cdc_jTxtEmail, cdc_jTxtEndereco ,cdc_jTxtBairro, cdc_jTxtCelular, cdc_jTxtNome, cdc_jTxtRg, cdc_jFmtdataNasc, cdc_jTxtCep, cdc_jTxtCidade, cdc_jTxtTelefone, cdc_jTxtSexo, cdc_jTxtEstado, cdc_jCBoxAtivo, cdc_jBtnConfirmar, cdc_jBtnCancelar);
         Util.habilitar(true, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jbtnPesquisar, cdc_jBtnIncluir);
-                Util.limpar(cdc_jTxtCodigo, cdc_jTxtNome, cdc_jTxtEmail, cdc_jTxtEndereco, cdc_jTxtBairro, cdc_jTxtCelular, cdc_jTxtRg, cdc_jFmtdataNasc, cdc_jTxtCep, cdc_jTxtCidade, cdc_jTxtTelefone, cdc_jTxtSexo, cdc_jTxtEstado);
+                Util.limpar(cdc_jTxtCodigo, cdc_jTxtNome, cdc_jTxtEmail, cdc_jFmtcpf, cdc_jTxtEndereco, cdc_jTxtBairro, cdc_jTxtCelular, cdc_jTxtRg, cdc_jFmtdataNasc, cdc_jTxtCep, cdc_jTxtCidade, cdc_jTxtTelefone, cdc_jTxtSexo, cdc_jTxtEstado);
 
 
          

@@ -25,7 +25,7 @@ public class Cdc_jDlgUsuario extends javax.swing.JDialog {
     
     boolean pesquisando = false;
     private boolean incluir;
-    private MaskFormatter mascaraCpf, mascaraDataNasc;
+    private MaskFormatter mascaraCpf;
     
     public Cdc_jDlgUsuario(java.awt.Frame parent, boolean modal) {
     super(parent, modal);
@@ -35,9 +35,7 @@ public class Cdc_jDlgUsuario extends javax.swing.JDialog {
     Util.habilitar(false, cdc_jTxtCodigo, cdc_jTxtNome, cdc_jChbAtivo, cdc_jCboNivel, cdc_jFmtCpf, cdc_jFmtdataNasci, cdc_jTxtApelido, cdc_jPwdSenha, cdc_jBtnConfirmar, cdc_jBtnCancelar);
     try {
             mascaraCpf = new MaskFormatter("###.###.###-##");
-            mascaraDataNasc = new MaskFormatter("##/##/####");
             cdc_jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
-            cdc_jFmtdataNasci.setFormatterFactory(new DefaultFormatterFactory(mascaraDataNasc));
         } catch (ParseException ex) {
             Logger.getLogger(Cdc_jDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -50,13 +48,7 @@ public class Cdc_jDlgUsuario extends javax.swing.JDialog {
             usuario.setCdcNome(cdc_jTxtNome.getText());
             usuario.setCdcApelido(cdc_jTxtApelido.getText());
             usuario.setCdcCpf(cdc_jFmtCpf.getText());
-            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-                try {
-                    Date dataNasc = formato.parse(cdc_jFmtdataNasci.getText());
-                    usuario.setCdcDataNas(dataNasc);
-                } catch (ParseException ex) {
-                    Logger.getLogger(Cdc_jDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            usuario.setCdcDataNas(Util.strToDate(cdc_jFmtdataNasci.getText()));  
             usuario.setCdcSenha(cdc_jPwdSenha.getText());
             usuario.setCdcNivel(cdc_jCboNivel.getSelectedIndex());
             if (cdc_jChbAtivo.isSelected() == true) {
@@ -72,9 +64,7 @@ public class Cdc_jDlgUsuario extends javax.swing.JDialog {
             cdc_jTxtNome.setText(usuario.getCdcNome());
             cdc_jTxtApelido.setText(usuario.getCdcApelido());
             cdc_jFmtCpf.setText(usuario.getCdcCpf());
-            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-            String dataNasc = formato.format(usuario.getCdcDataNas());
-            cdc_jFmtdataNasci.setText(dataNasc);
+            cdc_jFmtdataNasci.setText(Util.dateToStr(usuario.getCdcDataNas()));
             cdc_jPwdSenha.setText(usuario.getCdcSenha());
             cdc_jCboNivel.setSelectedIndex(usuario.getCdcNivel());
             if (usuario.getCdcAtivo().equals("S") == true) {

@@ -3,10 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package view;
+import bean.CdcVendas;
 import bean.CdcVendedor;
 //import dao.cdc_vendedorDAO;
 import dao.VendedorDAO;
 import java.util.List;
+import tools.Util;
 /**
  *
  * @author clari
@@ -66,6 +68,11 @@ public class Cdc_jDlgVendedorPesquisar extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jBtnOK.setText("OK");
@@ -110,11 +117,21 @@ public class Cdc_jDlgVendedorPesquisar extends javax.swing.JDialog {
 
     private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
         // TODO add your handling code here:
-        int linSel = jTable1.getSelectedRow();
-        CdcVendedor vendedor = (CdcVendedor) controllerVendedor.getBean(linSel);
+         if (jTable1.getSelectedRow() == -1){
+            Util.mensagem("Selecione uma liha");
+        } else {
+        CdcVendedor vendedor =  (CdcVendedor) controllerVendedor.getBean( jTable1.getSelectedRow() );
         jDlgVendedor.beanView(vendedor);
-        setVisible(false);
+        this.setVisible(false);
+        }
     }//GEN-LAST:event_jBtnOKActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+         if (evt.getClickCount() == 2){
+        jBtnOKActionPerformed(null);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

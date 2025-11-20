@@ -4,6 +4,8 @@
  */
 package view;
 import bean.CdcUsuario;
+import bean.CdcVendas;
+import bean.CdcVendasProdutos;
 //import dao.cdc_usuariosDAO;
 import dao.UsuariosDAO;
 import java.util.List;
@@ -12,31 +14,32 @@ import tools.Util;
  *
  * @author clari
  */
-public class Cdc_jDlgUsuarioPesquisar extends javax.swing.JDialog {
-        Cdc_jDlgUsuario jDlgUsuarios;
-        Cdc_ControllerUsuario controllerUsuarios;
+public class Cdc_jDlgVendasProdutosPesquisar extends javax.swing.JDialog {
+        Cdc_JDlgVendasProdutos jDlgVendasProdutos;
+        Cdc_ControllerVendasProdutos controllerVendasProdutos;
+        Cdc_jDlgVendas cdcJDlgVendas;
 
     /**
-     * Creates new form Cdc_jDlgUsuarioPesquisar
+     * Creates new form Cdc_JDlgVendasProdutosPesquisar
      */
-    public Cdc_jDlgUsuarioPesquisar(java.awt.Frame parent, boolean modal) {
+    public Cdc_jDlgVendasProdutosPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         UsuariosDAO usuariosDao = new UsuariosDAO();
         List lista = (List) usuariosDao.listAll();
-        controllerUsuarios = new Cdc_ControllerUsuario();
-        controllerUsuarios.setList(lista);
-        jTable1.setModel(controllerUsuarios);
+        controllerVendasProdutos = new Cdc_ControllerVendasProdutos();
+        controllerVendasProdutos.setList(lista);
+        jTable1.setModel(controllerVendasProdutos);
         contarRegistros();
     }
 
-    public void setTelaPai(Cdc_jDlgUsuario jDlgUsuarios){
-        this.jDlgUsuarios = jDlgUsuarios;
+    public void setTelaPai(Cdc_JDlgVendasProdutos jDlgVendasProdutos){
+        this.jDlgVendasProdutos = jDlgVendasProdutos;
     }
     public void contarRegistros() {
     int total = jTable1.getRowCount();
-    cdc_totalRegistros.setText("Total de registros dos Usuários: " + total);
+    cdc_totalRegistros.setText("Total de registros das Vendas: " + total);
 }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -123,8 +126,8 @@ public class Cdc_jDlgUsuarioPesquisar extends javax.swing.JDialog {
         if (jTable1.getSelectedRow() == -1){
             Util.mensagem("Selecione uma liha");
         } else {
-        CdcUsuario usuarios =  (CdcUsuario) controllerUsuarios.getBean( jTable1.getSelectedRow() );
-        jDlgUsuarios.beanView(usuarios);
+            CdcVendas vendas =  (CdcVendas) controllerVendasProdutos.getBean( jTable1.getSelectedRow() );
+        cdcJDlgVendas.beanView(vendas);
         this.setVisible(false);
         }
     }//GEN-LAST:event_jBtnOKActionPerformed
@@ -153,20 +156,21 @@ public class Cdc_jDlgUsuarioPesquisar extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cdc_jDlgUsuarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cdc_jDlgVendasProdutosPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cdc_jDlgUsuarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cdc_jDlgVendasProdutosPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cdc_jDlgUsuarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cdc_jDlgVendasProdutosPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cdc_jDlgUsuarioPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cdc_jDlgVendasProdutosPesquisar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Cdc_jDlgUsuarioPesquisar dialog = new Cdc_jDlgUsuarioPesquisar(new javax.swing.JFrame(), true);
+                Cdc_jDlgVendasProdutosPesquisar dialog = new Cdc_jDlgVendasProdutosPesquisar(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
