@@ -89,7 +89,8 @@ public class CdcVendasProdutos  implements java.io.Serializable {
     public void setCdcQuantidade(int cdcQuantidade) {
         this.cdcQuantidade = cdcQuantidade;
     }
-
+    
+    
 
 
 

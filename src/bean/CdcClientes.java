@@ -226,7 +226,21 @@ public class CdcClientes  implements java.io.Serializable {
         this.cdcAtivo = cdcAtivo;
     }
 
-
+    @Override
+    public String toString(){
+        return this.cdcNome;
+    }
+    
+     @Override
+        public boolean equals(Object object){
+        if (object instanceof CdcClientes){
+            CdcClientes cdcClientes = (CdcClientes)object;
+            if (this.getCdcIdClientes()== cdcClientes.getCdcIdClientes()){
+                return true;
+            }
+        }
+         return false;
+    }
 
 
 

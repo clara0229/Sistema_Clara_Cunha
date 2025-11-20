@@ -1,6 +1,10 @@
 package tools;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
@@ -36,27 +40,49 @@ public class Util {
     public static void mensagem(String cad){
     JOptionPane.showMessageDialog(null,cad);
     }
-    public static boolean perguntar(String cad){
-    JOptionPane.showConfirmDialog(null, cad);
-    return true;
+    public static boolean perguntar(String cad) {
+        int resp = JOptionPane.showConfirmDialog(null, cad, "Perguntar", JOptionPane.YES_NO_OPTION);
+        return resp == JOptionPane.YES_OPTION;
     }
-    public static int strToInt(String cad) {
-        return Integer.valueOf(cad);
-        }
+
+    public static int strToInt(String num) {
+        return Integer.valueOf(num);
+    }
+
     public static String intToStr(int num) {
         return String.valueOf(num);
     }
-    public static double strToDuble(String cad){
-    return 0;
+
+    public static double strToDouble(String cad) {
+        try {
+            return Double.parseDouble(cad.replace(",", "."));
+        } catch (NumberFormatException e) {
+            mensagem("Erro");
+            return 0.0;
+        }
     }
-    public static String doubleToStr(double num){
-    return "";
+
+    public static String doubleToStr(double num) {
+        return String.valueOf(num);
     }
-    public static Date strToDate(String cad){
-    return null;
+
+    public static Date strToDate(String data) {
+        SimpleDateFormat datando = new SimpleDateFormat("dd/MM/yyyy");
+        datando.setLenient(false);
+        try {
+            return datando.parse(data);
+        } catch (ParseException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
-    public static String dateToStr(Date data){
-    return "";
+
+    public static String dateToStr(Date data) {
+        if (data == null) {
+            return "";
+        }
+        SimpleDateFormat datando = new SimpleDateFormat("dd/MM/yyyy");
+        return datando.format(data);
     }
-    
 }
+    

@@ -119,7 +119,21 @@ public class CdcVendedor  implements java.io.Serializable {
     public void setCdcAtivo(String cdcAtivo) {
         this.cdcAtivo = cdcAtivo;
     }
-
+    @Override
+    public String toString(){
+        return this.cdcNome;
+    }
+    
+     @Override
+    public boolean equals(Object object){
+        if (object instanceof CdcVendedor){
+            CdcVendedor cdcVendedor = (CdcVendedor)object;
+            if (this.getCdcIdVendedor() == cdcVendedor.getCdcIdVendedor()){
+                return true;
+            }
+        }
+         return false;
+    }
 
 
 

@@ -13,6 +13,7 @@ import dao.Cdc_vendasDAO;
 import dao.VendedorDAO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import tools.Util;
 import java.util.List;
@@ -30,7 +31,9 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
     /**
      * Creates new form JDlgCdcVendas
      */
+    Cdc_ControllerVendasProdutos cdc_ControllerVendasProdutos;
     private boolean incluir; 
+    
     public Cdc_jDlgVendas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -56,6 +59,10 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
             Logger.getLogger(Cdc_jDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
             }
+            
+        cdc_ControllerVendasProdutos = new Cdc_ControllerVendasProdutos();
+        cdc_ControllerVendasProdutos.setList(new ArrayList());
+        cdc_jTable2.setModel(cdc_ControllerVendasProdutos);
     }
 
     public CdcVendas viewBean() {
@@ -71,7 +78,7 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
                     vendas.setCdcDataVenda(dataNasc);
                 } catch (ParseException ex) {
                     Logger.getLogger(Cdc_JDlgClientes.class.getName()).log(Level.SEVERE, null, ex);
-                }        vendas.setCdcTotal(Util.strToDuble(cdc_jTxtTotal.getText()));
+                }        vendas.setCdcTotal(Util.strToDouble(cdc_jTxtTotal.getText()));
         return vendas;
     }
     
@@ -387,11 +394,11 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
 
     private void cdc_jBtnExcluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnExcluirProdActionPerformed
         // TODO add your handling code here:
-        if (Util.perguntar("Deseja Excluir?") == true) {
-            Cdc_vendasDAO vendasDAO = new Cdc_vendasDAO();
-            vendasDAO.delete(viewBean());
+        
+        if(Util.perguntar("Deseja Excluir?" )== true ){
+            int rowIndex = cdc_jTable2.getSelectedRow();
+            cdc_ControllerVendasProdutos.removeBean(rowIndex);
         }
-        Util.limpar(cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor, cdc_jTxtTotal);
     }//GEN-LAST:event_cdc_jBtnExcluirProdActionPerformed
 
     private void cdc_jBtnAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnAlterarProdActionPerformed
@@ -403,7 +410,10 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
     private void cdc_jBtnIncluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnIncluirProdActionPerformed
         // TODO add your handling code here:
         Cdc_JDlgVendasProdutos jDlgCdcVendasProdutos = new Cdc_JDlgVendasProdutos(null, true);
+        jDlgCdcVendasProdutos.setTelaAnterior(this);
         jDlgCdcVendasProdutos.setVisible(true);
+        
+        
     }//GEN-LAST:event_cdc_jBtnIncluirProdActionPerformed
 
     private void cdc_jCboClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jCboClientesActionPerformed

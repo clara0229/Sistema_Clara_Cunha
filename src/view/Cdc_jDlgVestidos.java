@@ -30,7 +30,7 @@ public class Cdc_jDlgVestidos extends javax.swing.JDialog {
             int codigo = Util.strToInt(cdc_jTxtCodigo.getText());
             vestidos.setCdcIdVestidos(codigo);
             vestidos.setCdcNome(cdc_JTxtNome.getText());
-            vestidos.setCdcPreco(Util.strToDuble(cdc_jTxtPreco.getText()));
+            vestidos.setCdcPreco(Util.strToDouble(cdc_jTxtPreco.getText()));
             vestidos.setCdcModelo(cdc_jTxtModelo.getText());
             vestidos.setCdcCategoria(cdc_jTxtCategoria.getText());
             vestidos.setCdcMarca(cdc_jTxtMarca.getText());

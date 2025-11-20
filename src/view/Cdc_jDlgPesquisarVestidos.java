@@ -9,6 +9,7 @@ import bean.CdcVestidos;
 //import dao.cdc_vestidosDAO;
 import dao.ProdutosDAO;
 import java.util.List;
+import tools.Util;
 
 /**
  *
@@ -67,6 +68,11 @@ public class Cdc_jDlgPesquisarVestidos extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jBtnOK.setText("OK");
@@ -108,11 +114,21 @@ public class Cdc_jDlgPesquisarVestidos extends javax.swing.JDialog {
 
     private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
         // TODO add your handling code here:
-        int linSel = jTable1.getSelectedRow();
-        CdcVestidos vestidos = (CdcVestidos) controllerVestidos.getBean(linSel);
+        if (jTable1.getSelectedRow() == -1){
+            Util.mensagem("Selecione uma liha");
+        } else {
+        CdcVestidos vestidos =  (CdcVestidos) controllerVestidos.getBean( jTable1.getSelectedRow() );
         jDlgVestidos.beanView(vestidos);
-        setVisible(false);
+        this.setVisible(false);
+        }
     }//GEN-LAST:event_jBtnOKActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2){
+        jBtnOKActionPerformed(null);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
