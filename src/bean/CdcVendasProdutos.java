@@ -50,7 +50,7 @@ public class CdcVendasProdutos  implements java.io.Serializable {
         this.cdcIdVendasProdutos = cdcIdVendasProdutos;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="cdc_idVendas", nullable=false)
     public CdcVendas getCdcVendas() {
         return this.cdcVendas;
@@ -60,7 +60,7 @@ public class CdcVendasProdutos  implements java.io.Serializable {
         this.cdcVendas = cdcVendas;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="cdc_idVestidos", nullable=false)
     public CdcVestidos getCdcVestidos() {
         return this.cdcVestidos;

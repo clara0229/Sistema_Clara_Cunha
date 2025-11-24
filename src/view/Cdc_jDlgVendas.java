@@ -8,8 +8,10 @@ package view;
 import dao.ClientesDAO;
 import bean.CdcClientes;
 import bean.CdcVendas;
+import bean.CdcVendasProdutos;
 import bean.CdcVendedor;
 import dao.Cdc_vendasDAO;
+import dao.VendasProdutosDAO;
 import dao.VendedorDAO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -76,7 +78,9 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
         cdc_jTxtCodigo.setText(Util.intToStr(vendas.getCdcIdVendas()));
         cdc_jTxtTotal.setText(Util.doubleToStr(vendas.getCdcTotal()));
         cdc_jFmtData.setText(Util.dateToStr(vendas.getCdcDataVenda()));
-            
+        VendasProdutosDAO vendasProdutosDAO = new VendasProdutosDAO();
+        List lista = (List) vendasProdutosDAO.listProdutos(vendas);
+        cdc_ControllerVendasProdutos.setList(lista);    
         
     }
     
@@ -355,25 +359,56 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
 
     private void cdc_jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-        if (Util.perguntar("Deseja Excluir?") == true) {
-            Cdc_vendasDAO vendasDAO = new Cdc_vendasDAO();
-            vendasDAO.delete(viewBean());
+        //if (Util.perguntar("Deseja Excluir?") == true) {
+          //  Cdc_vendasDAO vendasDAO = new Cdc_vendasDAO();
+            //vendasDAO.delete(viewBean());
+        //}
+        
+        
+        if (Util.perguntar("Deseja realmente excluir o registro?")) {
+            Cdc_vendasDAO pedidosDAO = new Cdc_vendasDAO();
+            VendasProdutosDAO vendasProdutosDAO = new VendasProdutosDAO();
+            CdcVendas vendas = viewBean();
+            for (int ind = 0; ind < cdc_jTable2.getRowCount(); ind++){
+                CdcVendasProdutos cdcVendasProdutos = (CdcVendasProdutos) cdc_ControllerVendasProdutos.getBean(ind);
+                cdcVendasProdutos.setCdcVendas(vendas);
+                vendasProdutosDAO.delete(cdcVendasProdutos);
+            }
+            pedidosDAO.delete(vendas);
         }
+        
         Util.limpar(cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor, cdc_jTxtTotal);
+        cdc_ControllerVendasProdutos.setList(new ArrayList());
+        cdc_jTxtCodigo.grabFocus();
     }//GEN-LAST:event_cdc_jBtnExcluirActionPerformed
 
     private void cdc_jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
+        //Cdc_vendasDAO vendasDAO = new Cdc_vendasDAO();
+        //if (incluir == true) {
+        //    vendasDAO.insert(viewBean());
+        //} else {
+        //    vendasDAO.update(viewBean());
+        //}
+        
         Cdc_vendasDAO vendasDAO = new Cdc_vendasDAO();
-        if (incluir == true) {
-            vendasDAO.insert(viewBean());
+        VendasProdutosDAO vendasProdutosDAO = new VendasProdutosDAO();
+        CdcVendas vendas = viewBean();
+        if (incluir == true){
+            vendasDAO.insert(vendas);
+            for (int ind = 0; ind < cdc_jTable2.getRowCount(); ind++){
+                CdcVendasProdutos cdcVendasProdutos = (CdcVendasProdutos) cdc_ControllerVendasProdutos.getBean(ind);
+                cdcVendasProdutos.setCdcVendas(vendas);
+                vendasProdutosDAO.insert(cdcVendasProdutos);
+            }
         } else {
-            vendasDAO.update(viewBean());
+            vendasProdutosDAO.update(vendas);
         }
         Util.habilitar(false, cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor, cdc_jTxtTotal,
                 cdc_jBtnConfirmar, cdc_jBtnCancelar, cdc_jBtnIncluirProd, cdc_jBtnAlterarProd, cdc_jBtnExcluirProd);
         Util.habilitar(true, cdc_jBtnIncluir, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jBtnPesquisar);
         Util.limpar(cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor, cdc_jTxtTotal);
+        cdc_ControllerVendasProdutos.setList(new ArrayList());
         
         
         

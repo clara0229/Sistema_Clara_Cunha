@@ -19,6 +19,7 @@ public class Cdc_ControllerVendasProdutos extends AbstractTableModel {
     
     public void setList(List lstVendasProdutos){
      this.lstVendasProdutos = lstVendasProdutos;  
+     this.fireTableDataChanged();
     }
     
     public Object getBean(int rowIndex){
