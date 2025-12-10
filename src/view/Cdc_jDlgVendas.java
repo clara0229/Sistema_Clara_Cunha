@@ -13,16 +13,11 @@ import bean.CdcVendedor;
 import dao.Cdc_vendasDAO;
 import dao.VendasProdutosDAO;
 import dao.VendedorDAO;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+
 import tools.Util;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.text.DefaultFormatterFactory;
-import javax.swing.text.MaskFormatter;
+
 
 /**
  *
@@ -39,6 +34,7 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
     public Cdc_jDlgVendas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setTitle("Tela de Vendas");
         setLocationRelativeTo(null);
         Util.habilitar(false, cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor, cdc_jTxtTotal,
                 cdc_jBtnConfirmar, cdc_jBtnCancelar, cdc_jBtnIncluirProd, cdc_jBtnAlterarProd, cdc_jBtnExcluirProd);

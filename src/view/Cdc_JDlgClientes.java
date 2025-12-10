@@ -484,10 +484,14 @@ public class Cdc_JDlgClientes extends javax.swing.JDialog {
         if (pesquisando == false) {
             Util.mensagem("Você precisa pesquisar um usuário primeiro");
         } else {
-                Util.perguntar("Você deseja excluir?");
+                if (Util.perguntar("Deseja realmente excluir o registro?")) {
+                        ClientesDAO clienteDAO = new ClientesDAO();
+                        CdcClientes cliente = viewBean();
+                        clienteDAO.delete(cliente);
                 Util.limpar(cdc_jTxtCodigo, cdc_jFmtcpf, cdc_jTxtEmail, cdc_jTxtEndereco, cdc_jTxtBairro, cdc_jTxtCelular, cdc_jTxtNome, cdc_jTxtRg, cdc_jFmtdataNasc, cdc_jTxtCep, cdc_jTxtCidade, cdc_jTxtTelefone, cdc_jTxtSexo, cdc_jTxtEstado, cdc_jCBoxAtivo, cdc_jBtnConfirmar, cdc_jBtnCancelar);  
         } 
-        
+        }
+       
                     
        
     }//GEN-LAST:event_cdc_jBtnExcluirActionPerformed

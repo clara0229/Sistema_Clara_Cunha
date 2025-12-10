@@ -29,7 +29,7 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
     public Cdc_jDlgVendedor(java.awt.Frame parent, boolean modal) {
     super(parent, modal);
     initComponents();
-    setTitle("Cadastro de Usuários");
+    setTitle("Cadastro de Vendedores");
     setLocationRelativeTo(null);
     Util.habilitar(false, cdc_jTxtCodigo, cdc_jTxtNome, cdc_jCBocAtivoSim, cdc_jFmtCpf, cdc_jFmtdataAdm, cdc_jFmtdataNasc, cdc_jTxtHorasTrabalhadas, cdc_jBtnConfirmar, cdc_jBtnCancelar);
     try {
@@ -329,10 +329,13 @@ public class Cdc_jDlgVendedor extends javax.swing.JDialog {
         if (pesquisando == false) {
             Util.mensagem("Você precisa pesquisar um usuário primeiro");
         } else {
-                Util.perguntar("Você deseja excluir?");
+                if (Util.perguntar("Deseja realmente excluir o registro?")) {
+                        VendedorDAO vendedorDAO = new VendedorDAO();
+                        CdcVendedor vendedor = viewBean();
+                        vendedorDAO.delete(vendedor);
                 Util.limpar(cdc_jTxtCodigo, cdc_jTxtNome, cdc_jCBocAtivoSim, cdc_jFmtCpf, cdc_jFmtdataAdm, cdc_jFmtdataNasc, cdc_jTxtHorasTrabalhadas);  
         }
-        
+        }
        
     }//GEN-LAST:event_cdc_jBtnExcluirActionPerformed
 

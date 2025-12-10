@@ -24,7 +24,7 @@ public class Cdc_JDlgVendasProdutos extends javax.swing.JDialog {
     public Cdc_JDlgVendasProdutos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Pedidos Produtos");
+        setTitle("Vendas Produtos");
         setLocationRelativeTo(null);
         Util.habilitar(false, cdc_jTxtValorUnitario, cdc_jTxtTotal);
         cdc_jTxtQuantidade.setText("1");

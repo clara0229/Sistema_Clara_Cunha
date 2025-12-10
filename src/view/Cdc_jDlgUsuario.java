@@ -342,10 +342,14 @@ public class Cdc_jDlgUsuario extends javax.swing.JDialog {
         if (pesquisando == false) {
             Util.mensagem("Você precisa pesquisar um usuário primeiro");
         } else {
-                Util.perguntar("Você deseja excluir?");
+       
+                 if (Util.perguntar("Deseja realmente excluir o registro?")) {
+                        UsuariosDAO usuarioDAO = new UsuariosDAO();
+                        CdcUsuario usuario = viewBean();
+                        usuarioDAO.delete(usuario);
         Util.limpar(cdc_jTxtCodigo, cdc_jTxtNome, cdc_jTxtApelido, cdc_jFmtCpf, cdc_jFmtdataNasci, cdc_jPwdSenha, cdc_jCboNivel, cdc_jChbAtivo);
         }
-       
+        }
     }//GEN-LAST:event_cdc_jBtnExcluirActionPerformed
 
     private void cdc_jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnConfirmarActionPerformed

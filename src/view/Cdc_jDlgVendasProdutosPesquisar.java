@@ -25,6 +25,7 @@ public class Cdc_jDlgVendasProdutosPesquisar extends javax.swing.JDialog {
     public Cdc_jDlgVendasProdutosPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setTitle("Pesquisar Vendas Produtos");
         setLocationRelativeTo(null);
         UsuariosDAO usuariosDao = new UsuariosDAO();
         List lista = (List) usuariosDao.listAll();

@@ -68,7 +68,7 @@ public class UsuariosDAO extends AbstractDAO {
         public boolean listLogin(String user, String pass) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(CdcUsuario.class);
-        criteria.add(Restrictions.eq("cdcNome", user));
+        criteria.add(Restrictions.eq("cdcApelido", user));
         criteria.add(Restrictions.eq("cdcSenha", pass));
 
         List resultado = criteria.list();

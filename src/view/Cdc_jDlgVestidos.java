@@ -21,7 +21,7 @@ public class Cdc_jDlgVestidos extends javax.swing.JDialog {
     public Cdc_jDlgVestidos(java.awt.Frame parent, boolean modal) {
     super(parent, modal);
     initComponents();
-    setTitle("Cadastro de Usuários");
+    setTitle("Cadastro de Vestidos");
     setLocationRelativeTo(null);
     Util.habilitar(false, cdc_jTxtCodigo, cdc_JTxtNome, cdc_jCBocAtivo, cdc_jTxtPreco, cdc_jTxtModelo, cdc_jTxtCategoria, cdc_jTxtMarca, cdc_jBtnConfirmar, cdc_jBtnCancelar);
 }
@@ -282,8 +282,12 @@ public class Cdc_jDlgVestidos extends javax.swing.JDialog {
         if (pesquisando == false) {
             Util.mensagem("Você precisa pesquisar um usuário primeiro");
         } else {
-                Util.perguntar("Você deseja excluir?");
+                if (Util.perguntar("Deseja realmente excluir o registro?")) {
+                        ProdutosDAO vestidosDAO = new ProdutosDAO();
+                        CdcVestidos vestidos = viewBean();
+                        vestidosDAO.delete(vestidos);
                 Util.limpar(cdc_jTxtCodigo, cdc_JTxtNome, cdc_jCBocAtivo, cdc_jTxtPreco, cdc_jTxtModelo, cdc_jTxtCategoria, cdc_jTxtMarca);  
+        }
         }
         
        
