@@ -8,6 +8,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import bean.CdcUsuario;
 import bean.CdcVendasProdutos;
+import java.util.ArrayList;
 
 
 /**
@@ -16,6 +17,8 @@ import bean.CdcVendasProdutos;
  */
 public class Cdc_ControllerVendasProdutos extends AbstractTableModel {
     private List lstVendasProdutos;
+    
+
     
     public void setList(List lstVendasProdutos){
      this.lstVendasProdutos = lstVendasProdutos;  

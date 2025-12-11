@@ -18,6 +18,7 @@ import tools.Util;
 public class Cdc_JDlgVendasProdutos extends javax.swing.JDialog {
     Cdc_ControllerVendasProdutos cdc_ControllerVendasProdutos;
     Cdc_jDlgVendas cdcJDlgVendas;
+    boolean incluir;
     /**
      * Creates new form JDlgCdcVendasProdutos
      */
@@ -172,8 +173,30 @@ public class Cdc_JDlgVendasProdutos extends javax.swing.JDialog {
         pedidosProdutos.setCdcVestidos((CdcVestidos) cdc_jCboProdutos.getSelectedItem());
         pedidosProdutos.setCdcQuantidade(Util.strToInt(cdc_jTxtQuantidade.getText()));
         pedidosProdutos.setCdcValorUnitario(Util.strToDouble(cdc_jTxtValorUnitario.getText()));
-        cdcJDlgVendas.cdc_ControllerVendasProdutos.addBean(pedidosProdutos);
+      //cdcJDlgVendas.cdc_ControllerVendasProdutos.addBean(pedidosProdutos);
+        if (incluir == true) {
+           cdcJDlgVendas.cdc_ControllerVendasProdutos.addBean(pedidosProdutos);
+        } else {
+            cdcJDlgVendas.cdc_ControllerVendasProdutos.removeBean(cdcJDlgVendas.getjTable1().getSelectedRow());
+         
+            cdcJDlgVendas.cdc_ControllerVendasProdutos.addBean(pedidosProdutos);
+        }        
         setVisible(false);
+
+//
+//if (incluir) {
+//    cdcJDlgVendas.cdc_ControllerVendasProdutos.addBean(pedidosProdutos);
+//} else {
+//    
+//    int index = cdcJDlgVendas.getjTable1().getSelectedRow();
+//    if (index >= 0) { 
+//        cdcJDlgVendas.cdc_ControllerVendasProdutos.removeBean(index);
+//    }
+//    cdcJDlgVendas.cdc_ControllerVendasProdutos.addBean(pedidosProdutos);
+//}
+
+setVisible(false);
+        
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed

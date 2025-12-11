@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import tools.Util;
 import java.util.List;
+import javax.swing.JTable;
 
 
 /**
@@ -90,6 +91,9 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
         cdc_jTxtTotal.setText(String.valueOf(total));
     }
 
+    public JTable getjTable1() {
+        return cdc_jTable2;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -339,16 +343,16 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
         Util.habilitar(true, cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor,
                 cdc_jBtnConfirmar, cdc_jBtnCancelar, cdc_jBtnIncluirProd, cdc_jBtnAlterarProd, cdc_jBtnExcluirProd);
         Util.habilitar(false, cdc_jBtnIncluir, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jBtnPesquisar);
-        Util.limpar(cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor, cdc_jTxtTotal);
+        
         cdc_jTxtCodigo.grabFocus();
         incluir = true;
     }//GEN-LAST:event_cdc_jBtnIncluirActionPerformed
 
     private void cdc_jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true,  cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor, cdc_jTxtTotal, cdc_jBtnConfirmar, cdc_jBtnCancelar, cdc_jBtnIncluirProd, cdc_jBtnAlterarProd, cdc_jBtnExcluirProd);
+        Util.habilitar(true, cdc_jBtnConfirmar, cdc_jBtnCancelar, cdc_jBtnPesquisar, cdc_jBtnIncluirProd, cdc_jBtnAlterarProd, cdc_jBtnExcluirProd);
+        //Util.limpar(cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor, cdc_jTxtTotal);
         Util.habilitar(false, cdc_jBtnIncluir, cdc_jBtnAlterar, cdc_jBtnExcluir, cdc_jBtnPesquisar);
-        Util.limpar(cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor, cdc_jTxtTotal);
         cdc_jFmtData.grabFocus();
         incluir = false;
     }//GEN-LAST:event_cdc_jBtnAlterarActionPerformed
@@ -445,6 +449,7 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
     private void cdc_jBtnAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnAlterarProdActionPerformed
         // TODO add your handling code here:
         Cdc_JDlgVendasProdutos jDlgCdcVendasProdutos = new Cdc_JDlgVendasProdutos(null, true);
+        jDlgCdcVendasProdutos.setTelaAnterior(this);
         jDlgCdcVendasProdutos.setVisible(true);
     }//GEN-LAST:event_cdc_jBtnAlterarProdActionPerformed
 

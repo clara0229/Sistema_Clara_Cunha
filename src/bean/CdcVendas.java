@@ -33,7 +33,7 @@ public class CdcVendas  implements java.io.Serializable {
      private CdcVendedor cdcVendedor;
      private Date cdcDataVenda;
      private double cdcTotal;
-     private Set cdcVendasProdutoses = new HashSet(0);
+     
 
     public CdcVendas() {
     }
@@ -49,7 +49,7 @@ public class CdcVendas  implements java.io.Serializable {
        this.cdcVendedor = cdcVendedor;
        this.cdcDataVenda = cdcDataVenda;
        this.cdcTotal = cdcTotal;
-       this.cdcVendasProdutoses = cdcVendasProdutoses;
+       
     }
    
      @Id 
