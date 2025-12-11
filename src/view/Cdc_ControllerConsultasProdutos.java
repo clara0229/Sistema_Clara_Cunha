@@ -19,7 +19,8 @@ public class Cdc_ControllerConsultasProdutos extends AbstractTableModel {
     List lista;
     
     public void setList(List lista){
-     this. lista = lista;   
+     this. lista = lista;  
+     this.fireTableDataChanged();
     }
     
     public Object getBean(int rowIndex){

@@ -21,6 +21,7 @@ public class Cdc_ControllerConsultasVendedor extends AbstractTableModel {
     
     public void setList(List lista){
      this. lista = lista;   
+     this.fireTableDataChanged();
     }
     
     public Object getBean(int rowIndex){

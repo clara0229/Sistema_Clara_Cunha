@@ -449,14 +449,14 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
     private void cdc_jBtnAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnAlterarProdActionPerformed
         // TODO add your handling code here:
         Cdc_JDlgVendasProdutos jDlgCdcVendasProdutos = new Cdc_JDlgVendasProdutos(null, true);
-        jDlgCdcVendasProdutos.setTelaAnterior(this);
+        jDlgCdcVendasProdutos.setTelaAnterior(this, false);
         jDlgCdcVendasProdutos.setVisible(true);
     }//GEN-LAST:event_cdc_jBtnAlterarProdActionPerformed
 
     private void cdc_jBtnIncluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdc_jBtnIncluirProdActionPerformed
         // TODO add your handling code here:
         Cdc_JDlgVendasProdutos jDlgCdcVendasProdutos = new Cdc_JDlgVendasProdutos(null, true);
-        jDlgCdcVendasProdutos.setTelaAnterior(this);
+        jDlgCdcVendasProdutos.setTelaAnterior(this, true);
         jDlgCdcVendasProdutos.setVisible(true);
         somaTotaisTabelaa();
         

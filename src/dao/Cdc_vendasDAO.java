@@ -53,14 +53,16 @@ public class Cdc_vendasDAO extends AbstractDAO {
         return lista;
     }
     
-    public Object listId(int nome) {
-        session.beginTransaction();
-        Criteria criteria = session.createCriteria(CdcVendas.class);
-        criteria.add(Restrictions.like("cdcIdVendas", "%" + nome + "%"));
-        List lista = criteria.list();
-        session.getTransaction().commit();
-        return lista;
-    }
+    public Object listId(int id) {
+    session.beginTransaction();
+    Criteria criteria = session.createCriteria(CdcVendas.class);
+    criteria.add(Restrictions.ge("cdcIdVendas", id)); 
+    List lista = criteria.list();
+    session.getTransaction().commit();
+    return lista;
+
+}
+
         
     public Object listTotal(double valor) {
         session.beginTransaction();
@@ -71,10 +73,10 @@ public class Cdc_vendasDAO extends AbstractDAO {
         return lista;
     }
     
-    public Object listIdTotal(int nome, double valor) {
+    public Object listIdTotal(int id, double valor) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(CdcVendas.class);
-        criteria.add(Restrictions.like("cdcIdVendas", "%" + nome + "%"));
+        criteria.add(Restrictions.ge("cdcIdVendas", id));
         criteria.add(Restrictions.ge("cdcTotal", valor));
         List lista = criteria.list();
         session.getTransaction().commit();

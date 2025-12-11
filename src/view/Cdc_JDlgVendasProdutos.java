@@ -36,9 +36,9 @@ public class Cdc_JDlgVendasProdutos extends javax.swing.JDialog {
         }
     }
     
-    public void setTelaAnterior(Cdc_jDlgVendas cdcJDlgVendas){
-        this.cdcJDlgVendas = cdcJDlgVendas;
-    
+    public void setTelaAnterior(Cdc_jDlgVendas cdcJDlgVendas, boolean incluir){
+        this.cdcJDlgVendas = cdcJDlgVendas;    
+       this.incluir = incluir;
     }
 
     /**
