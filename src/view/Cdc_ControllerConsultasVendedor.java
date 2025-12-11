@@ -4,16 +4,19 @@
  */
 package view;
 
+
+import bean.CdcClientes;
+import bean.CdcVendedor;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import bean.CdcVendedor;
 
 
 /**
  *
- * @author clari
+ * @author Marcos
  */
-public class Cdc_ControllerVendedor extends AbstractTableModel{
+public class Cdc_ControllerConsultasVendedor extends AbstractTableModel {
+
     List lista;
     
     public void setList(List lista){
@@ -30,7 +33,7 @@ public class Cdc_ControllerVendedor extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 3;
     }
 
     @Override
@@ -43,12 +46,10 @@ public class Cdc_ControllerVendedor extends AbstractTableModel{
             return usuarios.getCdcNome();
         }
         if (columnIndex == 2){
-            return usuarios.getCdcCpf();
+            return usuarios.getCdcHorasTrab();
+        
         }
-        if (columnIndex == 3){
-            return usuarios.getCdcDataNas();
-        }
-        return "LP 4";
+        return "";
         
     }
         
@@ -56,8 +57,7 @@ public class Cdc_ControllerVendedor extends AbstractTableModel{
     public String getColumnName (int column) {
         if (column == 0) return "Código";
         if (column == 1) return "Nome";
-        if (column == 2) return "Cpf";
-        if (column == 3) return "Data Nascimento";
+        if (column == 2) return "Horas Trabalhadas";
         return "";
     }
     

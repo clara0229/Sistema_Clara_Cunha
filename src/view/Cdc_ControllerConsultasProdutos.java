@@ -4,16 +4,18 @@
  */
 package view;
 
+
+import bean.CdcVestidos;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import bean.CdcVendedor;
 
 
 /**
  *
- * @author clari
+ * @author Marcos
  */
-public class Cdc_ControllerVendedor extends AbstractTableModel{
+public class Cdc_ControllerConsultasProdutos extends AbstractTableModel {
+
     List lista;
     
     public void setList(List lista){
@@ -30,25 +32,23 @@ public class Cdc_ControllerVendedor extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 3;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        CdcVendedor usuarios = (CdcVendedor) lista.get(rowIndex);
+        CdcVestidos vestidos = (CdcVestidos) lista.get(rowIndex);
         if (columnIndex == 0){
-            return usuarios.getCdcIdVendedor();
+            return vestidos.getCdcIdVestidos();
         }
         if (columnIndex == 1){
-            return usuarios.getCdcNome();
+            return vestidos.getCdcNome();
         }
         if (columnIndex == 2){
-            return usuarios.getCdcCpf();
+            return vestidos.getCdcPreco();
         }
-        if (columnIndex == 3){
-            return usuarios.getCdcDataNas();
-        }
-        return "LP 4";
+        
+        return "";
         
     }
         
@@ -56,8 +56,8 @@ public class Cdc_ControllerVendedor extends AbstractTableModel{
     public String getColumnName (int column) {
         if (column == 0) return "Código";
         if (column == 1) return "Nome";
-        if (column == 2) return "Cpf";
-        if (column == 3) return "Data Nascimento";
+        if (column == 2) return "Preço";
+        
         return "";
     }
     

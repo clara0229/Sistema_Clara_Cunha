@@ -74,7 +74,7 @@ public class Cdc_vendasDAO extends AbstractDAO {
     public Object listIdTotal(int nome, double valor) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(CdcVendas.class);
-        criteria.add(Restrictions.like("nome", "%" + nome + "%"));
+        criteria.add(Restrictions.like("cdcIdVendas", "%" + nome + "%"));
         criteria.add(Restrictions.ge("cdcTotal", valor));
         List lista = criteria.list();
         session.getTransaction().commit();
