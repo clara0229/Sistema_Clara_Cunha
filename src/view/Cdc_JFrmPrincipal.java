@@ -228,7 +228,9 @@ public class Cdc_JFrmPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar3, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jToolBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,8 +372,6 @@ public class Cdc_JFrmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtnFClientes;
-    private javax.swing.JButton jBtnFClientes1;
     private javax.swing.JButton jBtnFClientes2;
     private javax.swing.JButton jBtnFProdutos;
     private javax.swing.JButton jBtnFVendas;
@@ -391,8 +391,6 @@ public class Cdc_JFrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMnuVestidos;
     private javax.swing.JMenuItem jMunVendedor;
     private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JToolBar jToolBar2;
     private javax.swing.JToolBar jToolBar3;
     // End of variables declaration//GEN-END:variables
 }
