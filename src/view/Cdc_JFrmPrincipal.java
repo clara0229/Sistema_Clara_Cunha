@@ -36,10 +36,11 @@ public class Cdc_JFrmPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jToolBar3 = new javax.swing.JToolBar();
-        jBtnFClientes2 = new javax.swing.JButton();
+        jBtnUsuario = new javax.swing.JButton();
         jBtnFProdutos = new javax.swing.JButton();
         jBtnVendedor = new javax.swing.JButton();
         jBtnFVendas = new javax.swing.JButton();
+        jBtnClientes = new javax.swing.JButton();
         jMnuBarra = new javax.swing.JMenuBar();
         jMnuVendedor = new javax.swing.JMenu();
         jMnuClientes = new javax.swing.JMenuItem();
@@ -60,16 +61,16 @@ public class Cdc_JFrmPrincipal extends javax.swing.JFrame {
 
         jToolBar3.setRollover(true);
 
-        jBtnFClientes2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clientes.png"))); // NOI18N
-        jBtnFClientes2.setFocusable(false);
-        jBtnFClientes2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBtnFClientes2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jBtnFClientes2.addActionListener(new java.awt.event.ActionListener() {
+        jBtnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario.png"))); // NOI18N
+        jBtnUsuario.setFocusable(false);
+        jBtnUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnUsuario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnFClientes2ActionPerformed(evt);
+                jBtnUsuarioActionPerformed(evt);
             }
         });
-        jToolBar3.add(jBtnFClientes2);
+        jToolBar3.add(jBtnUsuario);
 
         jBtnFProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/vestido.png"))); // NOI18N
         jBtnFProdutos.setFocusable(false);
@@ -103,6 +104,17 @@ public class Cdc_JFrmPrincipal extends javax.swing.JFrame {
             }
         });
         jToolBar3.add(jBtnFVendas);
+
+        jBtnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clientes.png"))); // NOI18N
+        jBtnClientes.setFocusable(false);
+        jBtnClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnClientesActionPerformed(evt);
+            }
+        });
+        jToolBar3.add(jBtnClientes);
 
         jMnuVendedor.setText("Cadastros");
         jMnuVendedor.addActionListener(new java.awt.event.ActionListener() {
@@ -283,16 +295,16 @@ public class Cdc_JFrmPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        Cdc_jDlgVendas dlg = new Cdc_jDlgVendas(this, true); 
+        Cdc_JDlgConsultaVendas dlg = new Cdc_JDlgConsultaVendas(this, true); 
         dlg.setLocationRelativeTo(this); 
         dlg.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jBtnFClientes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnFClientes2ActionPerformed
+    private void jBtnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnUsuarioActionPerformed
         // TODO add your handling code here:
-        jDlgClientes(null);
+        jMnuUsuariosActionPerformed(null);
         
-    }//GEN-LAST:event_jBtnFClientes2ActionPerformed
+    }//GEN-LAST:event_jBtnUsuarioActionPerformed
 
     private void jBtnFProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnFProdutosActionPerformed
         // TODO add your handling code here:
@@ -332,6 +344,11 @@ public class Cdc_JFrmPrincipal extends javax.swing.JFrame {
         Cdc_JDlgConsultaVendas cdc_JDlgConsultaVendas = new Cdc_JDlgConsultaVendas(null, true);
         cdc_JDlgConsultaVendas.setVisible(true);
     }//GEN-LAST:event_jMnuVendassActionPerformed
+
+    private void jBtnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnClientesActionPerformed
+        // TODO add your handling code here:
+        jMnuClientessActionPerformed(null);
+    }//GEN-LAST:event_jBtnClientesActionPerformed
         
     /**
      * @param args the command line arguments
@@ -372,9 +389,10 @@ public class Cdc_JFrmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtnFClientes2;
+    private javax.swing.JButton jBtnClientes;
     private javax.swing.JButton jBtnFProdutos;
     private javax.swing.JButton jBtnFVendas;
+    private javax.swing.JButton jBtnUsuario;
     private javax.swing.JButton jBtnVendedor;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
