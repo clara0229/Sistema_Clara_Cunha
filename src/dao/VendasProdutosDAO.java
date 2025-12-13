@@ -53,6 +53,14 @@ public class VendasProdutosDAO extends AbstractDAO {
         session.getTransaction().commit();
         return lista;
     }
+    
+    public void deleteVendas(CdcVendas vendas) {
+        List lista = (List) listProdutos(vendas);
+        for (int i = 0; i < lista.size(); i++) {
+            CdcVendasProdutos vendasProdutos = (CdcVendasProdutos) lista.get(i);
+            delete(vendasProdutos);
+        }
+    }
 
     @Override
         public ArrayList listAll() {

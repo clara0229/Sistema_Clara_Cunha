@@ -375,6 +375,7 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
                 vendasProdutosDAO.delete(cdcVendasProdutos);
             }
             pedidosDAO.delete(vendas);
+            
         }
         
         Util.limpar(cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor, cdc_jTxtTotal);
@@ -403,6 +404,12 @@ public class Cdc_jDlgVendas extends javax.swing.JDialog {
             }
         } else {
             vendasProdutosDAO.update(vendas);
+            vendasProdutosDAO.deleteVendas(vendas);
+            for (int ind = 0; ind < cdc_jTable2.getRowCount(); ind++) {
+            CdcVendasProdutos cdcVendasProdutos = (CdcVendasProdutos) cdc_ControllerVendasProdutos.getBean(ind);
+            cdcVendasProdutos.setCdcVendas(vendas);
+            vendasProdutosDAO.insert(cdcVendasProdutos);
+        }
         }
         Util.habilitar(false, cdc_jTxtCodigo, cdc_jFmtData, cdc_jCboClientes, cdc_jCboVendedor, cdc_jTxtTotal,
                 cdc_jBtnConfirmar, cdc_jBtnCancelar, cdc_jBtnIncluirProd, cdc_jBtnAlterarProd, cdc_jBtnExcluirProd);
